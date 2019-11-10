@@ -1,0 +1,28 @@
+﻿### FILE {{uppercase_first_letter x-product.appService}}Module.cs
+
+using Microsoft.Extensions.Logging;
+using Nancy;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+
+namespace {{ uppercase_first_letter x-product.appName}}.Modules.{{uppercase_first_letter x-product.appService}}
+{
+    public class {{uppercase_first_letter x-product.appService}}Module : NancyModule
+    {
+        public {{uppercase_first_letter x-product.appService}}Module(I{{uppercase_first_letter x-product.appService}}Service {{x-product.appService}}Service) : base("{{basePath}}")
+        {
+			{{#each paths}}
+                   {{#each this}}
+
+			{{uppercase_first_letter @key}}("{{ @../key }}",  async (parameters, token) =>
+            {
+                return await this.EvaluateAndBind<{{uppercase_first_letter this.operationId}}Request>(async (request) => await {{x-product.appService}}Service.{{uppercase_first_letter this.operationId}}(request, Nancy.HttpStatusCode.Created));
+            });
+
+                   {{/each}}
+			{{/each}}
+        }
+    }
+}
