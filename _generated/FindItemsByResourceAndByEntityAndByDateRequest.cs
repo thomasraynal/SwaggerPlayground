@@ -9,13 +9,16 @@ namespace SwaggerPlayground.Modules.Resources
     {
 
 
-                public string Resource {get; set;}
+ public         string
+ Resource  {get;set;}
 
 
-                public string Entity {get; set;}
+ public         string
+ Entity  {get;set;}
 
 
-                public string Date {get; set;}
+ public         DateTime
+ Date  {get;set;}
 
 
 

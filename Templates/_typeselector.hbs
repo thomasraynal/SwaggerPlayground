@@ -1,0 +1,7 @@
+﻿{{#if_equals type 'array'}}
+    {{#if_not_empty this.items.type}}
+        IEnumerable<{{> types }} {{this.items.type}}>
+    {{/if_not_empty}}
+    {{else}}
+    {{> types }} {{this.items.type}}
+{{/if_equals}}

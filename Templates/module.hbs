@@ -13,11 +13,11 @@ namespace {{uppercase_first_letter x-product.appName}}.Modules.{{uppercase_first
 
 			{{uppercase_first_letter @key}}("{{ @../key }}",  async (parameters, token) =>
             {
-                return await this.EvaluateAndBind<{{uppercase_first_letter this.operationId}}Request>(async (request) => await {{x-product.appService}}Service.{{uppercase_first_letter this.operationId}}(request, Nancy.HttpStatusCode.Created));
+                return await this.EvaluateAndBind<{{uppercase_first_letter this.operationId}}Request> (async (request) => await {{../../x-product.appService}}Service.{{uppercase_first_letter this.operationId}}(request), HttpStatusCode.Created);
             });
 
-                   {{/each}}
-			{{/each}}
-        }
+                {{/each}}
+           {{/each}}
     }
-}
+    }
+    }

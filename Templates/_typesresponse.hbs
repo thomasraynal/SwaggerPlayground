@@ -1,0 +1,15 @@
+﻿{{#each responses}}
+    {{#if_equals this.description 'Success'}}
+        {{#if_not_empty this.schema}}
+            {{#ref_resolve}}
+                {{#if_empty this.schema.$ref }}
+                    Task<{{> typeselector this.schema }}>
+                {{else}}
+                    Task<{{ uppercase_first_letter (split_get_last this.schema.$ref '/') }}>
+                {{/if_empty}}
+            {{/ref_resolve}}
+        {{else}}
+            Task
+        {{/if_not_empty}}
+    {{/if_equals}}
+{{/each}}

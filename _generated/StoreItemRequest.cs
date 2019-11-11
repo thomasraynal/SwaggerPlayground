@@ -9,7 +9,7 @@ namespace SwaggerPlayground.Modules.Resources
     {
 
 
-                public  Body {get; set;}
+ public  Body  {get;set;}
 
 
 

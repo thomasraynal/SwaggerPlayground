@@ -15,11 +15,7 @@ namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercas
 {{#each this.parameters}}
 {{#ref_resolve}}
 
-{{#if_empty schema.$ref }}
-                public {{this.type}} {{uppercase_first_letter this.name}} {get; set;}
-{{else}}
-                public {{ uppercase_first_letter (split_get_last schema.$ref '/') }} {{uppercase_first_letter this.name}}  {get;set;}
-{{/if_empty}}
+ public {{> types }} {{uppercase_first_letter this.name}}  {get;set;}
 
 {{/ref_resolve}}
 {{/each}}

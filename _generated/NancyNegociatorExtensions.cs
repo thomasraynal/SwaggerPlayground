@@ -9,10 +9,30 @@ namespace SwaggerPlayground.Modules.Resources
 {
     public static class NancyNegociatorExtensions
     {
-
         public static async Task<Negotiator>
     EvaluateAndBind<TRequest>
-        (this NancyModule module, Func<TRequest, Task<object>> success, HttpStatusCode OnSuccess = HttpStatusCode.OK) where TRequest : class
+        (this NancyModule module, Func<TRequest, Task>
+            success, HttpStatusCode OnSuccess = HttpStatusCode.OK) where TRequest : class
+        {
+            var request = module.BindAndValidate<TRequest>
+                ();
+
+            if (!module.ModelValidationResult.IsValid)
+            {
+                return module.Negotiate.WithStatusCode(HttpStatusCode.BadRequest)
+                .WithModel(module.ModelValidationResult.FormattedErrors);
+            }
+
+            await success(request);
+
+            return await module.Negotiate.WithStatusCode(OnSuccess);
+
+        }
+
+
+        public static async Task<Negotiator>
+            EvaluateAndBind<TRequest>
+                (this NancyModule module, Func<TRequest, Task<object>> success, HttpStatusCode OnSuccess = HttpStatusCode.OK) where TRequest : class
         {
             var request = module.BindAndValidate<TRequest>();
 
