@@ -1,0 +1,25 @@
+﻿### FILE I{{uppercase_first_letter x-product.appService}}Service.cs
+
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace {{ uppercase_first_letter x-product.appName}}.Modules.{{uppercase_first_letter x-product.appService}}
+{
+    public interface I{{uppercase_first_letter x-product.appService}}Service
+    {
+
+{{#each paths}}
+{{#each this}}
+{{#each this.responses}}
+{{this.schema.type}}
+
+{{/each}}
+{{/each}}
+{{/each}}
+
+
+
+    }
+
+}

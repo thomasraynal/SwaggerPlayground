@@ -1,10 +1,5 @@
 
-using Microsoft.Extensions.Logging;
 using Nancy;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 
 namespace SwaggerPlayground.Modules.Resources
 {

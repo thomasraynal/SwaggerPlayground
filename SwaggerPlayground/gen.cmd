@@ -1,1 +1,1 @@
-dotnet-codegen ./Specs/ressources.json ./Templates/module.hbs ./_generated
+dotnet-codegen ./Specs/ressources.json ./Templates ./_generated

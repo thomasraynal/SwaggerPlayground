@@ -65,7 +65,7 @@
         "produces": [ "application/json" ],
         "parameters": [
           {
-            "name": "Resource",
+            "name": "resource",
             "in": "query",
             "description": "Resource name",
             "required": true,
@@ -100,9 +100,16 @@
         "produces": [ "application/json" ],
         "parameters": [
           {
-            "name": "Resource",
+            "name": "resource",
             "in": "query",
             "description": "Resource name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "entity",
+            "in": "query",
+            "description": "Entity name",
             "required": true,
             "type": "string"
           },
