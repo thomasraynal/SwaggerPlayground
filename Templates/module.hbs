@@ -1,6 +1,7 @@
 ﻿### FILE {{uppercase_first_letter x-product.appService}}Module.cs
 
 using Nancy;
+using SwaggerPlayground.Common;
 
 namespace {{uppercase_first_letter x-product.appName}}.Modules.{{uppercase_first_letter x-product.appService}}
 {
@@ -8,16 +9,16 @@ namespace {{uppercase_first_letter x-product.appName}}.Modules.{{uppercase_first
     {
         public {{uppercase_first_letter x-product.appService}}Module(I{{uppercase_first_letter x-product.appService}}Service {{x-product.appService}}Service) : base("{{basePath}}")
         {
-			{{#each paths}}
-                   {{#each this}}
+{{#each paths}}
+{{#each this}}
 
-			{{uppercase_first_letter @key}}("{{ @../key }}",  async (parameters, token) =>
+           {{uppercase_first_letter @key}}("{{ @../key }}",  async (parameters, token) =>
             {
-                return await this.EvaluateAndBind<{{uppercase_first_letter this.operationId}}Request> (async (request) => await {{../../x-product.appService}}Service.{{uppercase_first_letter this.operationId}}(request), HttpStatusCode.Created);
+                return await this.EvaluateAndBind<{{uppercase_first_letter this.operationId}}Request>(async (request) => await {{../../x-product.appService}}Service.{{uppercase_first_letter this.operationId}}(request), HttpStatusCode.Created);
             });
 
-                {{/each}}
-           {{/each}}
+    {{/each}}
+    {{/each}}
+        }
     }
-    }
-    }
+}

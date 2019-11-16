@@ -1,26 +1,22 @@
-
-using Nancy;
+﻿using Nancy;
 using Nancy.ModelBinding;
 using Nancy.Responses.Negotiation;
 using System;
 using System.Threading.Tasks;
 
-namespace SwaggerPlayground.Modules.Resources
+namespace SwaggerPlayground.Common
 {
     public static class NancyNegociatorExtensions
     {
-        public static async Task<Negotiator>
-    EvaluateAndBind<TRequest>
-        (this NancyModule module, Func<TRequest, Task>
-            success, HttpStatusCode OnSuccess = HttpStatusCode.OK) where TRequest : class
+
+        public static async Task<Negotiator> EvaluateAndBind<TRequest>(this NancyModule module, Func<TRequest, Task> success, HttpStatusCode OnSuccess = HttpStatusCode.OK) where TRequest : class
         {
-            var request = module.BindAndValidate<TRequest>
-                ();
+            var request = module.BindAndValidate<TRequest>();
 
             if (!module.ModelValidationResult.IsValid)
             {
                 return module.Negotiate.WithStatusCode(HttpStatusCode.BadRequest)
-                .WithModel(module.ModelValidationResult.FormattedErrors);
+                                       .WithModel(module.ModelValidationResult.FormattedErrors);
             }
 
             await success(request);
@@ -29,10 +25,7 @@ namespace SwaggerPlayground.Modules.Resources
 
         }
 
-
-        public static async Task<Negotiator>
-            EvaluateAndBind<TRequest>
-                (this NancyModule module, Func<TRequest, Task<object>> success, HttpStatusCode OnSuccess = HttpStatusCode.OK) where TRequest : class
+        public static async Task<Negotiator> EvaluateAndBind<TRequest>(this NancyModule module, Func<TRequest, Task<object>> success, HttpStatusCode OnSuccess = HttpStatusCode.OK) where TRequest : class
         {
             var request = module.BindAndValidate<TRequest>();
 

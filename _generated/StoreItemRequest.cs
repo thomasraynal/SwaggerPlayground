@@ -7,20 +7,14 @@ namespace SwaggerPlayground.Modules.Resources
 {
     public class StoreItemRequest
     {
-
-
- public  Body  {get;set;}
-
-
+        public ResourceItems ResourceItems {get; set; }
 
       public override int GetHashCode()
         {
             unchecked
             {
-                var hashCode = nameof( StoreItemRequest).GetHashCode();
-
-                  hashCode = (hashCode * 397) ^ Body.GetHashCode();
-
+                var hashCode = nameof(StoreItemRequest).GetHashCode();
+                hashCode = (hashCode * 397) ^ ResourceItems.GetHashCode();
                 return hashCode;
             }
         }

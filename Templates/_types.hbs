@@ -1,7 +1,9 @@
 ﻿{{#if_equals type 'string'}}
-    {{#with_matching format 'date' 'DateTime' }}
-        {{.}}
-    {{else}}
-        string
-    {{/with_matching}}
+{{#with_matching format 'date' 'DateTime' }}
+{{.}}
+{{else}}
+string
+{{/with_matching}}
 {{/if_equals}}
+
+

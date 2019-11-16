@@ -36,15 +36,11 @@
         "parameters": [
           {
             "in": "body",
-            "name": "body",
-            "description": "Array of Resource items",
+            "name": "resourceItems",
+            "description": "Resource items",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {}
-              }
+              "$ref": "#/definitions/ResourceItems"
             }
           }
         ],
@@ -138,10 +134,18 @@
   },
   "definitions": {
     "ResourceItems": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {}
+      "properties": {
+        "Data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "date"
+        }
       }
     }
   }

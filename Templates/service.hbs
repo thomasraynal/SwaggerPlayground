@@ -8,12 +8,12 @@ namespace {{ uppercase_first_letter x-product.appName}}.Modules.{{uppercase_firs
 {
     public interface I{{uppercase_first_letter x-product.appService}}Service
     {
-        {{#each paths}}
-            {{#each this}}
+{{#each paths}}
+{{#each this}}
 
-              {{> typesresponse}}  {{uppercase_first_letter this.operationId}}({{uppercase_first_letter this.operationId}}Request request);
+        {{#one_line}}{{> typesresponse}}  {{uppercase_first_letter this.operationId}}({{uppercase_first_letter this.operationId}}Request request);{{/one_line}}
 
-            {{/each}}
-        {{/each}}
+{{/each}}
+{{/each}}
     }
-    }
+}
