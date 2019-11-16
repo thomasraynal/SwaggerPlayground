@@ -11,9 +11,7 @@ namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercas
     public class {{uppercase_first_letter @../@key}}
     {
 {{#each this}}
-{{#ref_resolve}}
         {{#one_line}}public {{> typeselector }} {{uppercase_first_letter @../@key}} {get; set; }{{/one_line}}
-{{/ref_resolve}}
 {{/each}}
 
       public override int GetHashCode()
@@ -21,10 +19,8 @@ namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercas
             unchecked
             {
                 var hashCode = nameof({{uppercase_first_letter @../@key}}).GetHashCode();
-{{#each this.this}}
-{{#ref_resolve}}
-                hashCode = (hashCode * 397) ^ {{uppercase_first_letter @../@key}}.GetHashCode();
-{{/ref_resolve}}
+{{#each this}}
+                hashCode = (hashCode * 397) ^ {{uppercase_first_letter @key}}.GetHashCode();
 {{/each}}
                 return hashCode;
             }
