@@ -4,6 +4,7 @@
 ### FILE {{uppercase_first_letter this.operationId}}Request.cs
 
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,9 +12,9 @@ namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercas
 {
     public class {{uppercase_first_letter this.operationId}}Request
     {
-        {{#each this.parameters}}
-        {{#one_line}}public {{> typeselector }} {{uppercase_first_letter this.name}} {get; set; }{{/one_line}}
-        {{/each}}
+{{#each this.parameters}}
+{{#one_line}}public {{> typeselector }} {{uppercase_first_letter this.name}} {get; set; }{{/one_line}}
+{{/each}}
 
       public override int GetHashCode()
         {

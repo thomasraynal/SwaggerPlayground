@@ -1,5 +1,6 @@
 
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,7 +8,7 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class UpdatePetRequest
     {
-        public Pet Body {get; set; }
+public Pet Body {get; set; }
 
       public override int GetHashCode()
         {

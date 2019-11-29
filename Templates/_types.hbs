@@ -18,6 +18,10 @@ int
  bool
 {{/if_equals}}
 
+{{#if_equals type 'file'}}
+Stream
+{{/if_equals}}
+
 {{#if_empty type}}
 {{uppercase_first_letter (split_get_last $ref '/') }}
 
