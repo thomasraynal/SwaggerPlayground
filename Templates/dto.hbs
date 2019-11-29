@@ -1,25 +1,24 @@
 ﻿{{#each definitions}}
-{{#each this}}
-### FILE {{uppercase_first_letter @../@key}}.cs
+### FILE {{uppercase_first_letter @key}}.cs
 
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercase_first_letter ../../x-product.appService}}
+namespace {{ uppercase_first_letter ../x-product.appName}}.Modules.{{uppercase_first_letter ../x-product.appService}}
 {
-    public class {{uppercase_first_letter @../@key}}
+    public class {{uppercase_first_letter @key}}
     {
-{{#each this}}
-        {{#one_line}}public {{> typeselector }} {{uppercase_first_letter @../@key}} {get; set; }{{/one_line}}
+{{#each properties}}
+{{#one_line}}public {{> typeselector }} {{uppercase_first_letter @../@key}} {get; set; }{{/one_line}}
 {{/each}}
 
       public override int GetHashCode()
         {
             unchecked
             {
-                var hashCode = nameof({{uppercase_first_letter @../@key}}).GetHashCode();
-{{#each this}}
+                var hashCode = nameof({{uppercase_first_letter @key}}).GetHashCode();
+{{#each properties}}
                 hashCode = (hashCode * 397) ^ {{uppercase_first_letter @key}}.GetHashCode();
 {{/each}}
                 return hashCode;
@@ -28,6 +27,5 @@ namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercas
     }
 }
 
-{{/each}}
 {{/each}}
 

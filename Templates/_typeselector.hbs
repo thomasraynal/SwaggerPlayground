@@ -6,9 +6,7 @@
 {{#if_not_empty this.items.type}}
 IEnumerable<{{> types }}{{this.items.type}}>
 {{else}}
-
-
-
+IEnumerable<{{uppercase_first_letter (split_get_last this.items.$ref '/') }}> 
 {{/if_not_empty}}
 {{else}}
 {{> types }} {{this.items.type}}
