@@ -1,13 +1,11 @@
 ﻿{{#each responses}}
-{{#if_equals this.description 'Success' 'successful operation'}}
-{{#if_not_empty this.schema}}
-{{#if_empty this.schema.$ref }}
-Task<{{> typeselector this.schema }}>
-{{else}}
-Task<{{uppercase_first_letter (split_get_last this.schema.$ref '/') }}>
-{{/if_empty}}
-{{else}}
-Task
-{{/if_not_empty}}
-{{/if_equals}}
+    {{#if_equals @key 200}}
+        {{#if_empty this.schema.$ref}}
+        Task<{{uppercase_first_letter (split_get_last this.schema.$ref '/') }}>
+    {{else}}
+        Task
+        {{/if_empty}}
+    {{/if_equals}}
 {{/each}}
+
+
