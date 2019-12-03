@@ -1,11 +1,12 @@
-﻿{{#each responses}}
+﻿{{#if_equals responses.200 null}}
+Task
+{{/each}}
+{{else}}
+{{#each responses}}
     {{#if_equals @key 200}}
-        {{#if_empty this.schema.$ref}}
-        Task<{{uppercase_first_letter (split_get_last this.schema.$ref '/') }}>
-    {{else}}
-        Task
-        {{/if_empty}}
+        {{> typeselector }}
     {{/if_equals}}
 {{/each}}
+{{/if_equals}}
 
 

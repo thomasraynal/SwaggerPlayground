@@ -7,31 +7,31 @@ namespace SwaggerPlayground.Modules.PetStore
     public interface IPetStoreService
     {
 
-AddPet(AddPetRequest request);
+Task AddPet(AddPetRequest request);
 
 
-UpdatePet(UpdatePetRequest request);
+Task UpdatePet(UpdatePetRequest request);
 
 
-Task<> FindPetsByStatus(FindPetsByStatusRequest request);
+Task FindPetsByStatus(FindPetsByStatusRequest request);
 
 
-Task<> FindPetsByTags(FindPetsByTagsRequest request);
+Task FindPetsByTags(FindPetsByTagsRequest request);
 
 
 Task GetPetById(GetPetByIdRequest request);
 
 
-UpdatePetWithForm(UpdatePetWithFormRequest request);
+Task UpdatePetWithForm(UpdatePetWithFormRequest request);
 
 
-DeletePet(DeletePetRequest request);
+Task DeletePet(DeletePetRequest request);
 
 
 Task UploadFile(UploadFileRequest request);
 
 
-Task<> GetInventory(GetInventoryRequest request);
+Task GetInventory(GetInventoryRequest request);
 
 
 Task PlaceOrder(PlaceOrderRequest request);
@@ -40,31 +40,31 @@ Task PlaceOrder(PlaceOrderRequest request);
 Task GetOrderById(GetOrderByIdRequest request);
 
 
-DeleteOrder(DeleteOrderRequest request);
+Task DeleteOrder(DeleteOrderRequest request);
 
 
-CreateUser(CreateUserRequest request);
+Task CreateUser(CreateUserRequest request);
 
 
-CreateUsersWithArrayInput(CreateUsersWithArrayInputRequest request);
+Task CreateUsersWithArrayInput(CreateUsersWithArrayInputRequest request);
 
 
-CreateUsersWithListInput(CreateUsersWithListInputRequest request);
+Task CreateUsersWithListInput(CreateUsersWithListInputRequest request);
 
 
-Task<> LoginUser(LoginUserRequest request);
+Task LoginUser(LoginUserRequest request);
 
 
-LogoutUser(LogoutUserRequest request);
+Task LogoutUser(LogoutUserRequest request);
 
 
 Task GetUserByName(GetUserByNameRequest request);
 
 
-UpdateUser(UpdateUserRequest request);
+Task UpdateUser(UpdateUserRequest request);
 
 
-DeleteUser(DeleteUserRequest request);
+Task DeleteUser(DeleteUserRequest request);
 
     }
 }
