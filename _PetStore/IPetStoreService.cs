@@ -13,13 +13,13 @@ Task AddPet(AddPetRequest request);
 Task UpdatePet(UpdatePetRequest request);
 
 
-Task FindPetsByStatus(FindPetsByStatusRequest request);
+Task< IEnumerable<Pet> > FindPetsByStatus(FindPetsByStatusRequest request);
 
 
-Task FindPetsByTags(FindPetsByTagsRequest request);
+Task< IEnumerable<Pet> > FindPetsByTags(FindPetsByTagsRequest request);
 
 
-Task GetPetById(GetPetByIdRequest request);
+Task< Pet > GetPetById(GetPetByIdRequest request);
 
 
 Task UpdatePetWithForm(UpdatePetWithFormRequest request);
@@ -28,16 +28,16 @@ Task UpdatePetWithForm(UpdatePetWithFormRequest request);
 Task DeletePet(DeletePetRequest request);
 
 
-Task UploadFile(UploadFileRequest request);
+Task< ApiResponse > UploadFile(UploadFileRequest request);
 
 
-Task GetInventory(GetInventoryRequest request);
+Task< > GetInventory(GetInventoryRequest request);
 
 
-Task PlaceOrder(PlaceOrderRequest request);
+Task< Order > PlaceOrder(PlaceOrderRequest request);
 
 
-Task GetOrderById(GetOrderByIdRequest request);
+Task< Order > GetOrderById(GetOrderByIdRequest request);
 
 
 Task DeleteOrder(DeleteOrderRequest request);
@@ -52,13 +52,13 @@ Task CreateUsersWithArrayInput(CreateUsersWithArrayInputRequest request);
 Task CreateUsersWithListInput(CreateUsersWithListInputRequest request);
 
 
-Task LoginUser(LoginUserRequest request);
+Task< > LoginUser(LoginUserRequest request);
 
 
 Task LogoutUser(LogoutUserRequest request);
 
 
-Task GetUserByName(GetUserByNameRequest request);
+Task< User > GetUserByName(GetUserByNameRequest request);
 
 
 Task UpdateUser(UpdateUserRequest request);

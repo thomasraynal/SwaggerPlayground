@@ -8,7 +8,7 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class UpdatePetWithFormRequest
     {
-public long PetId {get; set; }
+public string PetId {get; set; }
 public string Name {get; set; }
 public string Status {get; set; }
 

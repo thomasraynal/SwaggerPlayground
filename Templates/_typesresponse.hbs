@@ -1,12 +1,12 @@
-﻿{{#if_equals responses.200 null}}
+﻿{{#if_empty responses.[[200]]}}
 Task
 {{/each}}
 {{else}}
 {{#each responses}}
     {{#if_equals @key 200}}
-        {{> typeselector }}
+      Task<{{>typeselector}}>
     {{/if_equals}}
 {{/each}}
-{{/if_equals}}
+{{/if_empty }}
 
 

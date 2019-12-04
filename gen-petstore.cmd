@@ -1,1 +1,1 @@
-dotnet-codegen ./Specs/petstore.json ./Templates ./_PetStore
+dotnet-codegen ./Specs/petstore.yaml ./Templates ./_PetStore

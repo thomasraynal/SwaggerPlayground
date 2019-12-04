@@ -6,7 +6,7 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class PetStoreModule : NancyModule
     {
-        public PetStoreModule(IPetStoreService petStoreService) : base("/v1/")
+        public PetStoreModule(IPetStoreService petStoreService) : base("/v2")
         {
 
            Post("/pet",  async (parameters, token) =>
