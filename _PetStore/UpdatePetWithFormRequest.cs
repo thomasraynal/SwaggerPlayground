@@ -8,9 +8,9 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class UpdatePetWithFormRequest
     {
-public string PetId {get; set; }
-public string Name {get; set; }
-public string Status {get; set; }
+public         string PetId {get; set; }
+public         string Name {get; set; }
+public         string Status {get; set; }
 
       public override int GetHashCode()
         {

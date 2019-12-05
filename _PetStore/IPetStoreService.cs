@@ -31,7 +31,7 @@ Task DeletePet(DeletePetRequest request);
 Task< ApiResponse > UploadFile(UploadFileRequest request);
 
 
-Task< > GetInventory(GetInventoryRequest request);
+Task< object > GetInventory(GetInventoryRequest request);
 
 
 Task< Order > PlaceOrder(PlaceOrderRequest request);
@@ -52,7 +52,7 @@ Task CreateUsersWithArrayInput(CreateUsersWithArrayInputRequest request);
 Task CreateUsersWithListInput(CreateUsersWithListInputRequest request);
 
 
-Task< > LoginUser(LoginUserRequest request);
+Task< string > LoginUser(LoginUserRequest request);
 
 
 Task LogoutUser(LogoutUserRequest request);

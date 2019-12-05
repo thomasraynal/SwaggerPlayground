@@ -1,31 +1,41 @@
-﻿{{#if_not_empty $ref}}
+﻿{{#if_not_empty this.type}}
+    {{#if_equals this.type 'array'}}
+        {{#if_not_empty this.items.type}}
+            IEnumerable<{{> types }}{{this.items.type}}>
+        {{else}}
+            {{#if_not_empty this.items.$ref}}
+                IEnumerable<{{uppercase_first_letter (split_get_last this.items.$ref '/') }}>
+            {{/if_not_empty}}
+        {{/if_not_empty}}
+    {{else}}
+        {{> types }}
+    {{/if_equals}}
+{{/if_not_empty}}
+
+{{#if_not_empty $ref}}
     {{uppercase_first_letter (split_get_last $ref '/') }}
 {{/if_not_empty}}
 
-{{#if_not_empty this.schema.$ref}}
-    {{uppercase_first_letter (split_get_last this.schema.$ref '/')}}
-{{else}}
-    {{#if_not_empty this.type}}
-        {{#if_equals this.type 'array'}}
-            {{#if_not_empty this.items.type}}
-                IEnumerable<{{> types }}{{this.items.type}}>
-            {{else}}
-                {{#if_not_empty this.items.$ref}}
-                    IEnumerable<{{uppercase_first_letter (split_get_last this.items.$ref '/') }}>
-                {{/if_not_empty}}
-            {{/if_not_empty}}
-        {{else}}
-            {{> types }}
-        {{/if_equals}}
+{{#if_not_empty this.schema}}
+
+    {{#if_not_empty this.schema.$ref}}
+        {{uppercase_first_letter (split_get_last this.schema.$ref '/')}}
     {{/if_not_empty}}
 
     {{#if_equals this.schema.type 'array'}}
+        
         {{#if_not_empty this.schema.items.type}}
             IEnumerable<{{> types }}{{this.schema.items.type}}>
-        {{else}}
-            {{#if_not_empty this.schema.items.$ref}}
-                IEnumerable<{{uppercase_first_letter (split_get_last this.schema.items.$ref '/') }}>
-            {{/if_not_empty}}
         {{/if_not_empty}}
+
+        {{#if_not_empty this.schema.items.$ref}}
+            IEnumerable<{{uppercase_first_letter (split_get_last this.schema.items.$ref '/') }}>
+        {{/if_not_empty}}
+
+    {{else}}
+        {{> types }}{{this.schema.type}}
     {{/if_equals}}
+
+    {{/if_equals}}
+
 {{/if_not_empty}}

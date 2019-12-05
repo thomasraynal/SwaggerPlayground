@@ -9,7 +9,7 @@ namespace SwaggerPlayground.Common
     public static class NancyNegociatorExtensions
     {
 
-        public static async Task<Negotiator> EvaluateAndBind<TRequest>(this NancyModule module, Func<TRequest, Task> success, HttpStatusCode OnSuccess = HttpStatusCode.OK) where TRequest : class
+        public static async Task<Negotiator> EvaluateAndBind<TRequest>(this NancyModule module, Func<TRequest, Task> success, HttpStatusCode onSuccessHttpCode = HttpStatusCode.OK) where TRequest : class
         {
             var request = module.BindAndValidate<TRequest>();
 
@@ -21,11 +21,11 @@ namespace SwaggerPlayground.Common
 
             await success(request);
 
-            return await module.Negotiate.WithStatusCode(OnSuccess);
+            return await module.Negotiate.WithStatusCode(onSuccessHttpCode);
 
         }
 
-        public static async Task<Negotiator> EvaluateAndBind<TRequest>(this NancyModule module, Func<TRequest, Task<object>> success, HttpStatusCode OnSuccess = HttpStatusCode.OK) where TRequest : class
+        public static async Task<Negotiator> EvaluateAndBind<TRequest>(this NancyModule module, Func<TRequest, Task<object>> success, HttpStatusCode onSuccessHttpCode = HttpStatusCode.OK) where TRequest : class
         {
             var request = module.BindAndValidate<TRequest>();
 
@@ -37,7 +37,7 @@ namespace SwaggerPlayground.Common
 
             var result = await success(request);
 
-            return await module.Negotiate.WithStatusCode(OnSuccess)
+            return await module.Negotiate.WithStatusCode(onSuccessHttpCode)
                              .WithModel(result);
 
         }

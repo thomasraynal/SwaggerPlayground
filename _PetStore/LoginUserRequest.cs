@@ -8,8 +8,8 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class LoginUserRequest
     {
-public string Username {get; set; }
-public string Password {get; set; }
+public         string Username {get; set; }
+public         string Password {get; set; }
 
       public override int GetHashCode()
         {
