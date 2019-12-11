@@ -9,7 +9,7 @@ namespace SwaggerPlayground.Modules.PetStore
     public class UploadFileRequest
     {
 public long PetId {get; set; }
-public         string AdditionalMetadata {get; set; }
+public string AdditionalMetadata {get; set; }
 public Stream File {get; set; }
 
       public override int GetHashCode()

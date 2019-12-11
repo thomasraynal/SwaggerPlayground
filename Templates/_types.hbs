@@ -1,8 +1,18 @@
-﻿{{#if_equals type 'string'}}
+﻿{{#if_not_empty enum}}
+    {{#if_not_empty name}}
+{{uppercase_first_lettername}}
+    {{/if_not_empty }}    
+{{/if_not_empty }}
+
+{{#if_equals type 'string'}}
     {{#with_matching format 'date' 'DateTime' }}
         {{.}}
     {{else}}
-        string
+        {{#if_not_empty enum}}
+            {{uppercase_first_letter @../@key}}
+        {{else}}
+            string
+        {{/if_not_empty }}    
     {{/with_matching}}
 {{/if_equals}}
 

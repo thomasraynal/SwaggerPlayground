@@ -28,7 +28,6 @@ namespace SwaggerPlayground.Tests
                         Category = new Category() { Id = 0, Name = "Dog" },
                         Name = "Choupette",
                         Id = 0,
-
                     };
 
                     var httpContent = new StringContent(JsonConvert.SerializeObject(pet), Encoding.UTF8, "application/json");

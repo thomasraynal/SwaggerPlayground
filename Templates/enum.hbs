@@ -1,0 +1,16 @@
+{{#each definitions}}
+    {{#each properties}}
+        {{#if_not_empty enum}}
+### FILE {{uppercase_first_letter @key}}.cs
+public enum {{uppercase_first_letter @key}} {
+
+{{#each this.enum}}    
+    {{uppercase_first_letter this}},
+{{/each}}
+}
+        {{/if_not_empty }}
+    {{/each}}
+{{/each}}
+
+
+

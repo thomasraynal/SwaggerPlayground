@@ -8,7 +8,7 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class UpdateUserRequest
     {
-public         string Username {get; set; }
+public string Username {get; set; }
 public User Body {get; set; }
 
       public override int GetHashCode()
