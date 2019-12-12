@@ -12,11 +12,6 @@ namespace SwaggerPlayground.Modules.PetStore
       public string AdditionalMetadata {get; set; }
       public Stream File {get; set; }
 
-      public override bool Equals(object obj)
-        {
-            return obj is UploadFileRequest && obj.GetHashCode() == GetHashCode();
-        }
-
       public override int GetHashCode()
         {
             unchecked

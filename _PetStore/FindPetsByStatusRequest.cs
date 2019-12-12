@@ -8,12 +8,7 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class FindPetsByStatusRequest
     {
-      public IEnumerable<Status string> Status {get; set; }
-
-      public override bool Equals(object obj)
-        {
-            return obj is FindPetsByStatusRequest && obj.GetHashCode() == GetHashCode();
-        }
+      public IEnumerable< string> Status {get; set; }
 
       public override int GetHashCode()
         {

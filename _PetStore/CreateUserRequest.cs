@@ -10,11 +10,6 @@ namespace SwaggerPlayground.Modules.PetStore
     {
       public User Body {get; set; }
 
-      public override bool Equals(object obj)
-        {
-            return obj is CreateUserRequest && obj.GetHashCode() == GetHashCode();
-        }
-
       public override int GetHashCode()
         {
             unchecked

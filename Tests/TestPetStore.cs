@@ -107,6 +107,11 @@ namespace SwaggerPlayground.Tests
 
             Assert.NotNull(pet);
         }
+        
+           [Test, Order(2)]
+        public async Task ShouldUpdateAPet()
+        {
+        }
 
     }
 }

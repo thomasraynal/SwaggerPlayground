@@ -12,11 +12,6 @@ namespace SwaggerPlayground.Modules.PetStore
       public string Name {get; set; }
       public string Status {get; set; }
 
-      public override bool Equals(object obj)
-        {
-            return obj is UpdatePetWithFormRequest && obj.GetHashCode() == GetHashCode();
-        }
-
       public override int GetHashCode()
         {
             unchecked
