@@ -8,7 +8,12 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class CreateUsersWithArrayInputRequest
     {
-public IEnumerable<User> Body {get; set; }
+      public IEnumerable<User> Body {get; set; }
+
+      public override bool Equals(object obj)
+        {
+            return obj is CreateUsersWithArrayInputRequest && obj.GetHashCode() == GetHashCode();
+        }
 
       public override int GetHashCode()
         {

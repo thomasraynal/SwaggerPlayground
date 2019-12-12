@@ -6,26 +6,26 @@
 
 {{#if_equals type 'string'}}
     {{#with_matching format 'date' 'DateTime' }}
-        {{.}}
+{{.}}
     {{else}}
         {{#if_not_empty enum}}
-            {{uppercase_first_letter @../@key}}
+{{uppercase_first_letter @../@key}}
         {{else}}
-            string
+string
         {{/if_not_empty }}    
     {{/with_matching}}
 {{/if_equals}}
 
 {{#if_equals type 'integer'}}
     {{#with_matching format 'int32' 'int' 'int64' 'long'}}
-        {{.}}
+{{.}}
     {{else}}
-        int
+int
     {{/with_matching}}
 {{/if_equals}}
 
 {{#if_equals type 'boolean'}}
- bool
+bool
 {{/if_equals}}
 
 {{#if_equals type 'file'}}

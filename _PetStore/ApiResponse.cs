@@ -8,12 +8,17 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class ApiResponse
     {
-public int Code {get; set; }
-public string Type {get; set; }
-public string Message {get; set; }
+      public int Code {get; set; }
+      public string Type {get; set; }
+      public string Message {get; set; }
+
+      public override bool Equals(object obj)
+        {
+            return obj is ApiResponse && obj.GetHashCode() == GetHashCode();
+        }
 
       public override int GetHashCode()
-        {
+       {
             unchecked
             {
                 var hashCode = nameof(ApiResponse).GetHashCode();

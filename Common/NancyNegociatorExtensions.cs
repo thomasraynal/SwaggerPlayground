@@ -1,7 +1,9 @@
 ﻿using Nancy;
 using Nancy.ModelBinding;
 using Nancy.Responses.Negotiation;
+using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Common
@@ -11,6 +13,7 @@ namespace SwaggerPlayground.Common
 
         public static async Task<Negotiator> EvaluateAndBind<TRequest>(this NancyModule module, Func<TRequest, Task> success, HttpStatusCode onSuccessHttpCode = HttpStatusCode.OK) where TRequest : class
         {
+            
             var request = module.BindAndValidate<TRequest>();
 
             if (!module.ModelValidationResult.IsValid)
@@ -21,12 +24,14 @@ namespace SwaggerPlayground.Common
 
             await success(request);
 
-            return await module.Negotiate.WithStatusCode(onSuccessHttpCode);
+            return await module.Negotiate.WithStatusCode(onSuccessHttpCode)
+                                         .WithModel(string.Empty);
 
         }
 
         public static async Task<Negotiator> EvaluateAndBind<TRequest>(this NancyModule module, Func<TRequest, Task<object>> success, HttpStatusCode onSuccessHttpCode = HttpStatusCode.OK) where TRequest : class
         {
+
             var request = module.BindAndValidate<TRequest>();
 
             if (!module.ModelValidationResult.IsValid)
@@ -38,8 +43,7 @@ namespace SwaggerPlayground.Common
             var result = await success(request);
 
             return await module.Negotiate.WithStatusCode(onSuccessHttpCode)
-                             .WithModel(result);
-
+                                         .WithModel(result);
         }
     }
 }

@@ -8,9 +8,14 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class UpdatePetWithFormRequest
     {
-public string PetId {get; set; }
-public string Name {get; set; }
-public string Status {get; set; }
+      public string PetId {get; set; }
+      public string Name {get; set; }
+      public string Status {get; set; }
+
+      public override bool Equals(object obj)
+        {
+            return obj is UpdatePetWithFormRequest && obj.GetHashCode() == GetHashCode();
+        }
 
       public override int GetHashCode()
         {

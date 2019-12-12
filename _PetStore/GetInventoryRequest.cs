@@ -9,6 +9,11 @@ namespace SwaggerPlayground.Modules.PetStore
     public class GetInventoryRequest
     {
 
+      public override bool Equals(object obj)
+        {
+            return obj is GetInventoryRequest && obj.GetHashCode() == GetHashCode();
+        }
+
       public override int GetHashCode()
         {
             unchecked

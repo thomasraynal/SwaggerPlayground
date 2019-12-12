@@ -2,11 +2,7 @@
 Task
 {{/each}}
 {{else}}
-{{#each responses}}
-    {{#if_equals @key 200}}
-      Task<{{>typeselector}}>
-    {{/if_equals}}
-{{/each}}
+Task<{{>typeselector responses.[[200]]}}>
 {{/if_empty }}
 
 

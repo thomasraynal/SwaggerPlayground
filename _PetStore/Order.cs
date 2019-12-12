@@ -8,15 +8,20 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class Order
     {
-public long Id {get; set; }
-public long PetId {get; set; }
-public int Quantity {get; set; }
-public string ShipDate {get; set; }
-public Status Status {get; set; }
-public bool Complete {get; set; }
+      public long Id {get; set; }
+      public long PetId {get; set; }
+      public int Quantity {get; set; }
+      public string ShipDate {get; set; }
+      public Status Status {get; set; }
+      public bool Complete {get; set; }
+
+      public override bool Equals(object obj)
+        {
+            return obj is Order && obj.GetHashCode() == GetHashCode();
+        }
 
       public override int GetHashCode()
-        {
+       {
             unchecked
             {
                 var hashCode = nameof(Order).GetHashCode();

@@ -9,6 +9,11 @@ namespace SwaggerPlayground.Modules.PetStore
     public class LogoutUserRequest
     {
 
+      public override bool Equals(object obj)
+        {
+            return obj is LogoutUserRequest && obj.GetHashCode() == GetHashCode();
+        }
+
       public override int GetHashCode()
         {
             unchecked

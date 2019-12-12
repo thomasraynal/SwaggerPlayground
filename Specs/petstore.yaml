@@ -34,7 +34,6 @@ paths:
       tags:
         - pet
       summary: Add a new pet to the store
-      x-swagger-router-controller: SampleController
       description: ""
       operationId: addPet
       consumes:
@@ -51,6 +50,8 @@ paths:
           schema:
             $ref: "#/definitions/Pet"
       responses:
+        "201":
+          description: Invalid ID supplied
         "405":
           description: Invalid input
       security:

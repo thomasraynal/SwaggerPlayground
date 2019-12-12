@@ -10,15 +10,15 @@ namespace {{uppercase_first_letter x-product.appName}}.Modules.{{uppercase_first
         public {{uppercase_first_letter x-product.appService}}Module(I{{uppercase_first_letter x-product.appService}}Service {{x-product.appService}}Service) : base("{{basePath}}")
         {
 {{#each paths}}
-{{#each this}}
+    {{#each this}}
 
            {{uppercase_first_letter @key}}("{{ @../key }}",  async (parameters, token) =>
             {
-                return await this.EvaluateAndBind<{{uppercase_first_letter this.operationId}}Request>(async (request) => await {{../../x-product.appService}}Service.{{uppercase_first_letter this.operationId}}(request), HttpStatusCode.Created);
+                return await this.EvaluateAndBind<{{uppercase_first_letter this.operationId}}Request>(async (request) => await {{../../x-product.appService}}Service.{{uppercase_first_letter this.operationId}}(request),  {{#one_line}}{{> responseDefaultStatusCode this}}){{/one_line}};
             });
 
     {{/each}}
-    {{/each}}
+{{/each}}
         }
     }
 }

@@ -8,7 +8,12 @@ namespace SwaggerPlayground.Modules.PetStore
 {
     public class PlaceOrderRequest
     {
-public Order Body {get; set; }
+      public Order Body {get; set; }
+
+      public override bool Equals(object obj)
+        {
+            return obj is PlaceOrderRequest && obj.GetHashCode() == GetHashCode();
+        }
 
       public override int GetHashCode()
         {
