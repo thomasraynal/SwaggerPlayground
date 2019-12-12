@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Tests
 {
+    //todo: bug IEnumerable<Enum> 
+    //todo: handle service response type as first success response
     //todo: handle complex object : /store/inventory
     //todo: handle error responses via exception http handler 
     //todo: handle required param with FluentValidation + partial class
