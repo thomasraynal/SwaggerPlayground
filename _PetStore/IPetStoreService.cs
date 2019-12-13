@@ -31,7 +31,7 @@ Task DeletePet(DeletePetRequest request);
 Task< ApiResponse > UploadFile(UploadFileRequest request);
 
 
-Task< object > GetInventory(GetInventoryRequest request);
+Task< IEnumerable< IEnumerable<(string, int )> > > GetInventory(GetInventoryRequest request);
 
 
 Task< Order > PlaceOrder(PlaceOrderRequest request);

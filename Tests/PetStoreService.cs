@@ -58,7 +58,7 @@ namespace SwaggerPlayground.Tests
             throw new NotImplementedException();
         }
 
-        public Task<object> GetInventory(GetInventoryRequest request)
+        public Task<IEnumerable<IEnumerable<(string, int)>>> GetInventory(GetInventoryRequest request)
         {
             throw new NotImplementedException();
         }

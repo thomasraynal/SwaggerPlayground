@@ -10,6 +10,11 @@ namespace SwaggerPlayground.Modules.PetStore
     {
       public string OrderId {get; set; }
 
+      public override bool Equals(object obj)
+        {
+            return obj is GetOrderByIdRequest && obj.GetHashCode() == GetHashCode();
+        }
+
       public override int GetHashCode()
         {
             unchecked

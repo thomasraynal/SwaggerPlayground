@@ -11,7 +11,7 @@ namespace SwaggerPlayground.Modules.PetStore
       public long Id {get; set; }
       public Category Category {get; set; }
       public string Name {get; set; }
-      public IEnumerable< string> PhotoUrls {get; set; }
+      public IEnumerable< string > PhotoUrls {get; set; }
       public IEnumerable<Tag> Tags {get; set; }
       public Status Status {get; set; }
 

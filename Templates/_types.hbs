@@ -31,3 +31,13 @@ bool
 {{#if_equals type 'file'}}
 Stream
 {{/if_equals}}
+
+{{#if_equals type 'object'}}
+    {{#if_not_empty additionalProperties}}
+        {{#if_equals additionalProperties.type 'object'}}
+        
+        {{else}}
+            IEnumerable<(string,{{> types additionalProperties}})>
+        {{/if_equals}}
+    {{/if_not_empty }}  
+{{/if_equals}}
