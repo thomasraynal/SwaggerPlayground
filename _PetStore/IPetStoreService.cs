@@ -7,7 +7,7 @@ namespace SwaggerPlayground.Modules.PetStore
     public interface IPetStoreService
     {
 
-Task AddPet(AddPetRequest request);
+Task< Pet > AddPet(AddPetRequest request);
 
 
 Task UpdatePet(UpdatePetRequest request);

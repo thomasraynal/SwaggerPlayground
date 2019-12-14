@@ -1,8 +1,45 @@
-﻿{{#if_empty responses.[[200]]}}
-Task
-{{/each}}
-{{else}}
+﻿{{#if_not_empty responses.[[200]].schema}}
 Task<{{>typeselector responses.[[200]]}}>
-{{/if_empty }}
+{{else}}
+    {{#if_not_empty responses.[[201]].schema}}
+Task<{{>typeselector responses.[[201]]}}>
+    {{else}}
+        {{#if_not_empty responses.[[202]].schema}}
+Task<{{>typeselector responses.[[202]]}}>
+            {{else}}
+                {{#if_not_empty responses.[[203]].schema}}
+Task<{{>typeselector responses.[[203]]}}>
+                    {{else}}
+                        {{#if_not_empty responses.[[204]].schema}}
+Task<{{>typeselector responses.[[204]]}}>
+                        {{else}}
+                            {{#if_not_empty responses.[[205]].schema}}
+Task<{{>typeselector responses.[[205]]}}>
+                            {{else}}
+                                {{#if_not_empty responses.[[206]].schema}}
+Task<{{>typeselector responses.[[206]]}}>
+                                {{else}}
+                                    {{#if_not_empty responses.[[207]].schema}}
+Task<{{>typeselector responses.[[207]]}}>
+                                    {{else}}
+                                        {{#if_not_empty responses.[[208]].schema}}
+Task<{{>typeselector responses.[[208]]}}>
+                                        {{else}}
+                                            {{#if_not_empty responses.[[226]].schema}}
+Task<{{>typeselector responses.[[226]]}}>
+                                            {{else}}
+Task
+                                            {{/if_not_empty}} 
+                                        {{/if_not_empty}} 
+                                    {{/if_not_empty}}                                              
+                                {{/if_not_empty}}                                          
+                            {{/if_not_empty}}                                  
+                        {{/if_not_empty}}              
+                {{/if_not_empty}} 
+        {{/if_not_empty }}            
+    {{/if_not_empty }}
+{{/if_not_empty }}
+
+
 
 

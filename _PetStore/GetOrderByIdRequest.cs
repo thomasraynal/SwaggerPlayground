@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class GetOrderByIdRequest
+    public partial class GetOrderByIdRequest
     {
       public string OrderId {get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class CreateUserRequest
+    public partial class CreateUserRequest
     {
       public User Body {get; set; }
 

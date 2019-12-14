@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class LogoutUserRequest
+    public partial class LogoutUserRequest
     {
 
       public override bool Equals(object obj)

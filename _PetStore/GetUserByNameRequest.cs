@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class GetUserByNameRequest
+    public partial class GetUserByNameRequest
     {
       public string Username {get; set; }
 

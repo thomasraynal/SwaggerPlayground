@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class CreateUsersWithArrayInputRequest
+    public partial class CreateUsersWithArrayInputRequest
     {
       public IEnumerable<User> Body {get; set; }
 

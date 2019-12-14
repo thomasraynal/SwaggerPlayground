@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class FindPetsByTagsRequest
+    public partial class FindPetsByTagsRequest
     {
       public IEnumerable< string > Tags {get; set; }
 

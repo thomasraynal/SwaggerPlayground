@@ -14,9 +14,6 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Tests
 {
-    //todo: bug IEnumerable<Enum> 
-    //todo: handle service response type as first success response
-    //todo: handle complex object : /store/inventory
     //todo: handle error responses via exception http handler 
     //todo: handle required param with FluentValidation + partial class
     //todo: handle produce/consume
@@ -92,7 +89,7 @@ namespace SwaggerPlayground.Tests
             var httpResponseMessage = await client.PostAsync($"{_host}/v2/pet", httpContent);
 
             Assert.AreEqual(HttpStatusCode.Created, httpResponseMessage.StatusCode);
-
+            Assert.AreEqual(request.Body, JsonConvert.DeserializeObject<Pet>(await httpResponseMessage.Content.ReadAsStringAsync()));
         }
 
         [Test, Order(1)]

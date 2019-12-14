@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class UpdatePetRequest
+    public partial class UpdatePetRequest
     {
       public Pet Body {get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class User
+    public partial class User
     {
       public long Id {get; set; }
       public string Username {get; set; }
@@ -17,27 +17,27 @@ namespace SwaggerPlayground.Modules.PetStore
       public string Phone {get; set; }
       public int UserStatus {get; set; }
 
-      public override bool Equals(object obj)
-        {
-            return obj is User && obj.GetHashCode() == GetHashCode();
-        }
+//      public override bool Equals(object obj)
+//        {
+//            return obj is User && obj.GetHashCode() == GetHashCode();
+//        }
 
-      public override int GetHashCode()
-       {
-            unchecked
-            {
-                var hashCode = nameof(User).GetHashCode();
-                hashCode = (hashCode * 397) ^ Id.GetHashCode();
-                hashCode = (hashCode * 397) ^ Username.GetHashCode();
-                hashCode = (hashCode * 397) ^ FirstName.GetHashCode();
-                hashCode = (hashCode * 397) ^ LastName.GetHashCode();
-                hashCode = (hashCode * 397) ^ Email.GetHashCode();
-                hashCode = (hashCode * 397) ^ Password.GetHashCode();
-                hashCode = (hashCode * 397) ^ Phone.GetHashCode();
-                hashCode = (hashCode * 397) ^ UserStatus.GetHashCode();
-                return hashCode;
-            }
-        }
+//      public override int GetHashCode()
+//       {
+//           unchecked
+//            {
+//                var hashCode = nameof(User).GetHashCode();
+//                if (default != Id) hashCode = (hashCode * 397) ^ Id.GetHashCode();
+//                if (default != Username) hashCode = (hashCode * 397) ^ Username.GetHashCode();
+//                if (default != FirstName) hashCode = (hashCode * 397) ^ FirstName.GetHashCode();
+//                if (default != LastName) hashCode = (hashCode * 397) ^ LastName.GetHashCode();
+//                if (default != Email) hashCode = (hashCode * 397) ^ Email.GetHashCode();
+//                if (default != Password) hashCode = (hashCode * 397) ^ Password.GetHashCode();
+//                if (default != Phone) hashCode = (hashCode * 397) ^ Phone.GetHashCode();
+//                if (default != UserStatus) hashCode = (hashCode * 397) ^ UserStatus.GetHashCode();
+//                return hashCode;
+//            }
+//        }
     }
 }
 

@@ -23,20 +23,12 @@ HttpStatusCode.PartialContent
 HttpStatusCode.MultipleStatus
                                     {{else}}
                                         {{#if_not_empty responses.[[208]]}}
-HttpStatusCode.Created
+HttpStatusCode.AlreadyReported
                                         {{else}}
-                                            {{#if_not_empty responses.[[208]]}}
-HttpStatusCode.Created
-                                            {{else}}
-                                                {{#if_not_empty responses.[[210]]}}
-HttpStatusCode.OK
-                                                {{else}}
-                                                    {{#if_not_empty responses.[[226]]}}
+                                            {{#if_not_empty responses.[[226]]}}
 HttpStatusCode.IMUsed
-                                                    {{else}}
+                                            {{else}}
 HttpStatusCode.OK
-                                                    {{/if_not_empty}} 
-                                                {{/if_not_empty}} 
                                             {{/if_not_empty}} 
                                         {{/if_not_empty}} 
                                     {{/if_not_empty}}                                              

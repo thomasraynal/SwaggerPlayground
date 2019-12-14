@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class GetInventoryRequest
+    public partial class GetInventoryRequest
     {
 
       public override bool Equals(object obj)

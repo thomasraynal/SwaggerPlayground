@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercase_first_letter ../../x-product.appService}}
 {
-    public class {{uppercase_first_letter this.operationId}}Request
+    public partial class {{uppercase_first_letter this.operationId}}Request
     {
 {{#each this.parameters}}
       public {{#one_line}}{{> typeselector }} {{uppercase_first_letter this.name}}{{/one_line}} {get; set; }

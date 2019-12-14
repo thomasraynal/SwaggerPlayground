@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class DeletePetRequest
+    public partial class DeletePetRequest
     {
       public string Api_key {get; set; }
       public long PetId {get; set; }

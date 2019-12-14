@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class UploadFileRequest
+    public partial class UploadFileRequest
     {
       public long PetId {get; set; }
       public string AdditionalMetadata {get; set; }

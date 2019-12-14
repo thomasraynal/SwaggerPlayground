@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,11 +12,11 @@ namespace SwaggerPlayground.Tests
     {
         private List<Pet> _pets = new List<Pet>();
 
-        public Task AddPet(AddPetRequest request)
+        public Task<Pet> AddPet(AddPetRequest request)
         {
             _pets.Add(request.Body);
 
-            return Task.CompletedTask;
+            return Task.FromResult(request.Body);
         }
 
         public Task CreateUser(CreateUserRequest request)

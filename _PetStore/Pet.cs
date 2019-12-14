@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
-    public class Pet
+    public partial class Pet
     {
       public long Id {get; set; }
       public Category Category {get; set; }
@@ -15,25 +15,25 @@ namespace SwaggerPlayground.Modules.PetStore
       public IEnumerable<Tag> Tags {get; set; }
       public Status Status {get; set; }
 
-      public override bool Equals(object obj)
-        {
-            return obj is Pet && obj.GetHashCode() == GetHashCode();
-        }
+//      public override bool Equals(object obj)
+//        {
+//            return obj is Pet && obj.GetHashCode() == GetHashCode();
+//        }
 
-      public override int GetHashCode()
-       {
-            unchecked
-            {
-                var hashCode = nameof(Pet).GetHashCode();
-                hashCode = (hashCode * 397) ^ Id.GetHashCode();
-                hashCode = (hashCode * 397) ^ Category.GetHashCode();
-                hashCode = (hashCode * 397) ^ Name.GetHashCode();
-                hashCode = (hashCode * 397) ^ PhotoUrls.GetHashCode();
-                hashCode = (hashCode * 397) ^ Tags.GetHashCode();
-                hashCode = (hashCode * 397) ^ Status.GetHashCode();
-                return hashCode;
-            }
-        }
+//      public override int GetHashCode()
+//       {
+//           unchecked
+//            {
+//                var hashCode = nameof(Pet).GetHashCode();
+//                if (default != Id) hashCode = (hashCode * 397) ^ Id.GetHashCode();
+//                if (default != Category) hashCode = (hashCode * 397) ^ Category.GetHashCode();
+//                if (default != Name) hashCode = (hashCode * 397) ^ Name.GetHashCode();
+//                if (default != PhotoUrls) hashCode = (hashCode * 397) ^ PhotoUrls.GetHashCode();
+//                if (default != Tags) hashCode = (hashCode * 397) ^ Tags.GetHashCode();
+//                if (default != Status) hashCode = (hashCode * 397) ^ Status.GetHashCode();
+//                return hashCode;
+//            }
+//        }
     }
 }
 
