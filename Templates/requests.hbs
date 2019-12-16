@@ -7,6 +7,8 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Net;
+using SwaggerPlayground.Common;
 
 namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercase_first_letter ../../x-product.appService}}
 {
@@ -27,7 +29,7 @@ namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercas
             {
                 var hashCode = nameof({{uppercase_first_letter this.operationId}}Request).GetHashCode();
 {{#each this.parameters}}
-                hashCode = (hashCode * 397) ^ {{uppercase_first_letter this.name}}.GetHashCode();
+                if(default != {{uppercase_first_letter this.name}}) hashCode = (hashCode * 397) ^ {{uppercase_first_letter this.name}}.GetHashCode();
 {{/each}}
                 return hashCode;
             }
@@ -35,8 +37,29 @@ namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercas
 
 
     }
+
+    {{#each this.responses}}
+        {{#with_matching @key '400' '401' '402' '403' '404' '405' '406' '407'}}
+
+public class {{uppercase_first_letter ../../this.operationId}}{{@key}}Exception : Exception, IHasHttpServiceError
+{
+    public {{uppercase_first_letter ../../this.operationId}}{{@key}}Exception()
+        : base() { }
+
+    public {{uppercase_first_letter ../../this.operationId}}{{@key}}Exception(string message)
+        : base(message) { }
+
+    public {{uppercase_first_letter ../../this.operationId}}{{@key}}Exception(string message, Exception innerException)
+        : base(message, innerException) { }
+
+    public HttpStatusCode HttpStatusCode => (HttpStatusCode){{@key}};
+}
+        {{/with_matching}}
+    {{/each}}
+
+
+
 }
 
 {{/each}}
 {{/each}}
-

@@ -3,6 +3,8 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Net;
+using SwaggerPlayground.Common;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -22,15 +24,19 @@ namespace SwaggerPlayground.Modules.PetStore
             unchecked
             {
                 var hashCode = nameof(UploadFileRequest).GetHashCode();
-                hashCode = (hashCode * 397) ^ PetId.GetHashCode();
-                hashCode = (hashCode * 397) ^ AdditionalMetadata.GetHashCode();
-                hashCode = (hashCode * 397) ^ File.GetHashCode();
+                if(default != PetId) hashCode = (hashCode * 397) ^ PetId.GetHashCode();
+                if(default != AdditionalMetadata) hashCode = (hashCode * 397) ^ AdditionalMetadata.GetHashCode();
+                if(default != File) hashCode = (hashCode * 397) ^ File.GetHashCode();
                 return hashCode;
             }
         }
 
 
     }
+
+
+
+
 }
 
 

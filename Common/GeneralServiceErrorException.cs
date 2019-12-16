@@ -5,17 +5,21 @@ using System.Text;
 
 namespace SwaggerPlayground.Common
 {
+    [Serializable]
     public class GeneralServiceErrorException : Exception, IHasHttpServiceError
     {
-        public GeneralServiceErrorException()
-            : base() { }
-
         public GeneralServiceErrorException(string message)
-            : base(message) { }
+            : base(message)
+        {
+
+        }
 
         public GeneralServiceErrorException(string message, Exception innerException)
-            : base(message, innerException) { }
+            : base(message, innerException)
+        {
 
-        public HttpServiceError HttpServiceError => new HttpServiceError(HttpStatusCode.InternalServerError, "Somthing wrong happens");
+        }
+
+        public HttpStatusCode HttpStatusCode => HttpStatusCode.InternalServerError;
     }
 }

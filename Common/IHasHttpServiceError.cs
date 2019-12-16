@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace SwaggerPlayground.Common
 {
-    //https://bytefish.de/blog/consistent_error_handling_with_nancy/
     public interface IHasHttpServiceError
     {
-        HttpServiceError HttpServiceError { get; }
+        public HttpStatusCode HttpStatusCode { get;  }
     }
 }

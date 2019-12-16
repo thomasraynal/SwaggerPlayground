@@ -3,6 +3,8 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Net;
+using SwaggerPlayground.Common;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -22,15 +24,19 @@ namespace SwaggerPlayground.Modules.PetStore
             unchecked
             {
                 var hashCode = nameof(UpdatePetWithFormRequest).GetHashCode();
-                hashCode = (hashCode * 397) ^ PetId.GetHashCode();
-                hashCode = (hashCode * 397) ^ Name.GetHashCode();
-                hashCode = (hashCode * 397) ^ Status.GetHashCode();
+                if(default != PetId) hashCode = (hashCode * 397) ^ PetId.GetHashCode();
+                if(default != Name) hashCode = (hashCode * 397) ^ Name.GetHashCode();
+                if(default != Status) hashCode = (hashCode * 397) ^ Status.GetHashCode();
                 return hashCode;
             }
         }
 
 
     }
+
+
+
+
 }
 
 

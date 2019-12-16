@@ -3,6 +3,8 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Net;
+using SwaggerPlayground.Common;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -25,6 +27,10 @@ namespace SwaggerPlayground.Modules.PetStore
 
 
     }
+
+
+
+
 }
 
 

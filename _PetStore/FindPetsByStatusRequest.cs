@@ -3,6 +3,8 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Net;
+using SwaggerPlayground.Common;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -20,13 +22,31 @@ namespace SwaggerPlayground.Modules.PetStore
             unchecked
             {
                 var hashCode = nameof(FindPetsByStatusRequest).GetHashCode();
-                hashCode = (hashCode * 397) ^ Status.GetHashCode();
+                if(default != Status) hashCode = (hashCode * 397) ^ Status.GetHashCode();
                 return hashCode;
             }
         }
 
 
     }
+
+
+public class FindPetsByStatus400Exception : Exception, IHasHttpServiceError
+{
+    public FindPetsByStatus400Exception()
+        : base() { }
+
+    public FindPetsByStatus400Exception(string message)
+        : base(message) { }
+
+    public FindPetsByStatus400Exception(string message, Exception innerException)
+        : base(message, innerException) { }
+
+    public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
+}
+
+
+
 }
 
 
