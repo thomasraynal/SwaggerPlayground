@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
+﻿using Nancy;
+using System;
 
 namespace SwaggerPlayground.Common
 {
     public interface IHasHttpServiceError
     {
         public HttpStatusCode HttpStatusCode { get;  }
+        public string Details { get; }
     }
 }

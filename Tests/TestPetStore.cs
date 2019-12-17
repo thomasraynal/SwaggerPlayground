@@ -104,11 +104,23 @@ namespace SwaggerPlayground.Tests
 
             Assert.NotNull(pet);
         }
-        
-           [Test, Order(2)]
+
+
+        [Test, Order(2)]
         public async Task ShouldUpdateAPet()
         {
         }
+
+        [Test, Order(3)]
+        public async Task ShoulTryGetAPetAndFailedWithNotFound()
+        {
+            var client = new HttpClient();
+            var httpResponseMessage = await client.GetAsync($"{_host}/v2/pet/1");
+
+            Assert.AreEqual(HttpStatusCode.NotFound, httpResponseMessage.StatusCode);
+            Assert.AreEqual("Pet 1 not found", JsonConvert.DeserializeObject<string>(await httpResponseMessage.Content.ReadAsStringAsync()));
+        }
+
 
     }
 }

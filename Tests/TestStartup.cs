@@ -6,6 +6,7 @@ using Nancy.Bootstrapper;
 using Nancy.Owin;
 using Nancy.Responses.Negotiation;
 using Nancy.TinyIoc;
+using SwaggerPlayground.Common;
 using SwaggerPlayground.Modules.PetStore;
 using System;
 using System.Collections.Generic;
@@ -31,9 +32,15 @@ namespace SwaggerPlayground.Tests
                            configuration.ResponseProcessors.Add(typeof(JsonProcessor));
                        });
             }
+
         }
 
-    protected override void ConfigureApplicationContainer(TinyIoCContainer container)
+        protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
+        {
+            CustomErrorHandler.Enable(pipelines, container.Resolve<IResponseNegotiator>());
+        }
+
+        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
             base.ConfigureApplicationContainer(container);
 

@@ -73,6 +73,8 @@ namespace SwaggerPlayground.Tests
         {
             var result = _pets.FirstOrDefault(pet => pet.Id == request.PetId);
 
+            if (null == result) throw new GetPetById404Exception($"Pet {request.PetId} not found");
+
             return Task.FromResult(result);
 
         }

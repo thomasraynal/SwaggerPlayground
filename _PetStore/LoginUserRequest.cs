@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Net;
+using Nancy;
 using SwaggerPlayground.Common;
 
 namespace SwaggerPlayground.Modules.PetStore
@@ -45,6 +45,8 @@ public class LoginUser400Exception : Exception, IHasHttpServiceError
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
+
+    public string Details => Message;
 }
 
 

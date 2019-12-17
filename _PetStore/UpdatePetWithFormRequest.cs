@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Net;
+using Nancy;
 using SwaggerPlayground.Common;
 
 namespace SwaggerPlayground.Modules.PetStore
@@ -34,6 +34,22 @@ namespace SwaggerPlayground.Modules.PetStore
 
     }
 
+
+public class UpdatePetWithForm405Exception : Exception, IHasHttpServiceError
+{
+    public UpdatePetWithForm405Exception()
+        : base() { }
+
+    public UpdatePetWithForm405Exception(string message)
+        : base(message) { }
+
+    public UpdatePetWithForm405Exception(string message, Exception innerException)
+        : base(message, innerException) { }
+
+    public HttpStatusCode HttpStatusCode => (HttpStatusCode)405;
+
+    public string Details => Message;
+}
 
 
 
