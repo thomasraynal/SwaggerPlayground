@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nancy;
 using SwaggerPlayground.Common;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -64,7 +65,13 @@ public class GetOrderById404Exception : Exception, IHasHttpServiceError
 }
 
 
+    public class GetOrderByIdRequestValidator : AbstractValidator<GetOrderByIdRequest>
+    {
+        public GetOrderByIdRequestValidator()
+        {
+                    RuleFor(request => request.OrderId).NotNull().NotEmpty().WithMessage("OrderId is required");
+        }
+    }
 
 }
-
 

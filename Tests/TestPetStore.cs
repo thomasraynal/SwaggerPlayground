@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 
 namespace SwaggerPlayground.Tests
 {
+    //todo: handle - allowEmptyValue: true
+    //todo: handle - default: 20
+    //todo: hanlde - required: true
     //todo: handle error responses via exception http handler 
     //todo: handle required param with FluentValidation + partial class
     //todo: handle produce/consume
@@ -93,6 +96,49 @@ namespace SwaggerPlayground.Tests
         }
 
         [Test, Order(1)]
+        public async Task ShouldTryToPutAPetAndFailedWithBadRequestOuterProperty()
+        {
+            var request = new AddPetRequest()
+            {
+                Body = null
+            };
+
+            var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            var httpResponseMessage = await client.PostAsync($"{_host}/v2/pet", httpContent);
+
+            Assert.AreEqual(HttpStatusCode.BadRequest, httpResponseMessage.StatusCode);
+            Assert.AreEqual("Body : Body is required", JsonConvert.DeserializeObject<string>(await httpResponseMessage.Content.ReadAsStringAsync()));
+
+
+        }
+
+        [Test, Order(1)]
+        public async Task ShouldTryToPutAPetAndFailedWithBadRequestInnerProperty()
+        {
+            var pet = new Pet()
+            {
+                Category = new Category() { Id = 0, Name = "Dog" },
+                Status = Status.Available,
+                Tags = new[] { new Tag() { Id = 0, Name = "Pretty" }, new Tag() { Id = 0, Name = "Ferocious" } }.ToList()
+            };
+
+            var request = new AddPetRequest()
+            {
+                Body = pet
+            };
+
+            var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            var httpResponseMessage = await client.PostAsync($"{_host}/v2/pet", httpContent);
+
+            Assert.AreEqual(HttpStatusCode.BadRequest, httpResponseMessage.StatusCode);
+            Assert.AreEqual("Body.Name : Name is required", JsonConvert.DeserializeObject<string>(await httpResponseMessage.Content.ReadAsStringAsync()));
+
+
+        }
+
+        [Test, Order(2)]
         public async Task ShouldGetAPet()
         {
             var client = new HttpClient();
@@ -106,12 +152,12 @@ namespace SwaggerPlayground.Tests
         }
 
 
-        [Test, Order(2)]
+        [Test, Order(3)]
         public async Task ShouldUpdateAPet()
         {
         }
 
-        [Test, Order(3)]
+        [Test, Order(4)]
         public async Task ShoulTryGetAPetAndFailedWithNotFound()
         {
             var client = new HttpClient();

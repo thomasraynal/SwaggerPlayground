@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nancy;
 using SwaggerPlayground.Common;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -30,7 +31,12 @@ namespace SwaggerPlayground.Modules.PetStore
 
 
 
+    public class GetInventoryRequestValidator : AbstractValidator<GetInventoryRequest>
+    {
+        public GetInventoryRequestValidator()
+        {
+        }
+    }
 
 }
-
 

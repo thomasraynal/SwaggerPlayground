@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -35,5 +36,19 @@ namespace SwaggerPlayground.Modules.PetStore
 //            }
 //        }
     }
+
+    public class PetValidator : AbstractValidator<Pet>
+    {
+        public PetValidator()
+        {
+
+                     RuleFor(dto => dto.Name).NotNull().WithMessage("Name is required");
+
+                     RuleFor(dto => dto.PhotoUrls).NotNull().WithMessage("PhotoUrls is required");
+        }
+    }
+
 }
+
+
 

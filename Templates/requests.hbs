@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nancy;
 using SwaggerPlayground.Common;
+using FluentValidation;
 
 namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercase_first_letter ../../x-product.appService}}
 {
@@ -60,8 +61,22 @@ public class {{uppercase_first_letter ../../this.operationId}}{{@key}}Exception 
     {{/each}}
 
 
+    public class {{uppercase_first_letter this.operationId}}RequestValidator : AbstractValidator<{{uppercase_first_letter this.operationId}}Request>
+    {
+        public {{uppercase_first_letter this.operationId}}RequestValidator()
+        {
+            {{#each this.parameters}}
+             {{#with_matching this.required 'true' . }}
+                {{#if_equals this.type 'string'}}
+                    RuleFor(request => request.{{uppercase_first_letter this.name}}).NotNull().NotEmpty().WithMessage("{{uppercase_first_letter this.name}} is required");
+                {{else}}
+                    RuleFor(request => request.{{uppercase_first_letter this.name}}).NotNull().WithMessage("{{uppercase_first_letter this.name}} is required");
+                {{/if_equals}}
+             {{/with_matching}}
+            {{/each}}
+        }
+    }
 
 }
-
 {{/each}}
 {{/each}}

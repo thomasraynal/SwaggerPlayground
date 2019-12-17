@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nancy;
 using SwaggerPlayground.Common;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -64,7 +65,13 @@ public class GetUserByName404Exception : Exception, IHasHttpServiceError
 }
 
 
+    public class GetUserByNameRequestValidator : AbstractValidator<GetUserByNameRequest>
+    {
+        public GetUserByNameRequestValidator()
+        {
+                    RuleFor(request => request.Username).NotNull().NotEmpty().WithMessage("Username is required");
+        }
+    }
 
 }
-
 

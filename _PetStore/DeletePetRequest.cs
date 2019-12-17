@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nancy;
 using SwaggerPlayground.Common;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -50,7 +51,13 @@ public class DeletePet400Exception : Exception, IHasHttpServiceError
 }
 
 
+    public class DeletePetRequestValidator : AbstractValidator<DeletePetRequest>
+    {
+        public DeletePetRequestValidator()
+        {
+                    RuleFor(request => request.PetId).NotNull().WithMessage("PetId is required");
+        }
+    }
 
 }
-
 

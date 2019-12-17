@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nancy;
 using SwaggerPlayground.Common;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -64,6 +65,12 @@ public class DeleteUser404Exception : Exception, IHasHttpServiceError
 }
 
 
+    public class DeleteUserRequestValidator : AbstractValidator<DeleteUserRequest>
+    {
+        public DeleteUserRequestValidator()
+        {
+                    RuleFor(request => request.Username).NotNull().NotEmpty().WithMessage("Username is required");
+        }
+    }
 
 }
-

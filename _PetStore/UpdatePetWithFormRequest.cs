@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nancy;
 using SwaggerPlayground.Common;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -52,7 +53,13 @@ public class UpdatePetWithForm405Exception : Exception, IHasHttpServiceError
 }
 
 
+    public class UpdatePetWithFormRequestValidator : AbstractValidator<UpdatePetWithFormRequest>
+    {
+        public UpdatePetWithFormRequestValidator()
+        {
+                    RuleFor(request => request.PetId).NotNull().NotEmpty().WithMessage("PetId is required");
+        }
+    }
 
 }
-
 

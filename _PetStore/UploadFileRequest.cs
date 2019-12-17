@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nancy;
 using SwaggerPlayground.Common;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -36,7 +37,13 @@ namespace SwaggerPlayground.Modules.PetStore
 
 
 
+    public class UploadFileRequestValidator : AbstractValidator<UploadFileRequest>
+    {
+        public UploadFileRequestValidator()
+        {
+                    RuleFor(request => request.PetId).NotNull().WithMessage("PetId is required");
+        }
+    }
 
 }
-
 

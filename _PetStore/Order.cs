@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -35,5 +36,15 @@ namespace SwaggerPlayground.Modules.PetStore
 //            }
 //        }
     }
+
+    public class OrderValidator : AbstractValidator<Order>
+    {
+        public OrderValidator()
+        {
+        }
+    }
+
 }
+
+
 

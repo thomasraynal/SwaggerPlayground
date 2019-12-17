@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nancy;
 using SwaggerPlayground.Common;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -48,7 +49,12 @@ public class FindPetsByStatus400Exception : Exception, IHasHttpServiceError
 }
 
 
+    public class FindPetsByStatusRequestValidator : AbstractValidator<FindPetsByStatusRequest>
+    {
+        public FindPetsByStatusRequestValidator()
+        {
+        }
+    }
 
 }
-
 

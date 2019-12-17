@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nancy;
 using SwaggerPlayground.Common;
+using FluentValidation;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
@@ -64,7 +65,13 @@ public class AddPet405Exception : Exception, IHasHttpServiceError
 }
 
 
+    public class AddPetRequestValidator : AbstractValidator<AddPetRequest>
+    {
+        public AddPetRequestValidator()
+        {
+                    RuleFor(request => request.Body).NotNull().WithMessage("Body is required");
+        }
+    }
 
 }
-
 
