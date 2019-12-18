@@ -38,12 +38,15 @@ namespace {{ uppercase_first_letter ../x-product.appName}}.Modules.{{uppercase_f
         public {{uppercase_first_letter @key}}Validator()
         {
             {{#each required}}
-{{../properties.[this].type}}
-              {{#if_equals properties[this].type 'string'}}
-                     RuleFor(dto => dto.{{uppercase_first_letter this}}).NotNull().NotEmpty().WithMessage("{{uppercase_first_letter this}} is required");
-                {{else}}
-                     RuleFor(dto => dto.{{uppercase_first_letter this}}).NotNull().WithMessage("{{uppercase_first_letter this}} is required");
-                {{/if_equals}}
+                {{#each ../properties}} 
+                    {{#if_equals this.@key ../}}
+                            {{#if_equals this.type 'string'}}
+                                    RuleFor(dto => dto.{{uppercase_first_letter @key}}).NotNull().NotEmpty().WithMessage("{{uppercase_first_letter @key}} is required");
+                                {{else}}
+                                    RuleFor(dto => dto.{{uppercase_first_letter @key}}).NotNull().WithMessage("{{uppercase_first_letter @key}} is required");
+                            {{/if_equals}}
+                    {{/if_equals}}
+                 {{/each}}
             {{/each}}
         }
     }

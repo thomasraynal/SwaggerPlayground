@@ -41,10 +41,8 @@ namespace SwaggerPlayground.Modules.PetStore
     {
         public PetValidator()
         {
-
-                     RuleFor(dto => dto.Name).NotNull().WithMessage("Name is required");
-
-                     RuleFor(dto => dto.PhotoUrls).NotNull().WithMessage("PhotoUrls is required");
+                                    RuleFor(dto => dto.Name).NotNull().NotEmpty().WithMessage("Name is required");
+                                    RuleFor(dto => dto.PhotoUrls).NotNull().WithMessage("PhotoUrls is required");
         }
     }
 
