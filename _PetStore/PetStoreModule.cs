@@ -19,7 +19,7 @@ namespace SwaggerPlayground.Modules.PetStore
 
                   var token = context.Request.Headers.Authorization;
 
-                  if (null == token) return null;
+                  if (string.IsNullOrEmpty(token)) return null;
                   return new ClaimsPrincipal(new ClaimsIdentity(new Claim[] { new Claim("user", "admin") },"token"));
               });
 
