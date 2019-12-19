@@ -81,7 +81,8 @@ namespace SwaggerPlayground.Tests
                 Name = "Choupette",
                 Id = 0,
                 Status = Status.Available,
-                Tags = new[] { new Tag() { Id = 0, Name = "Pretty" }, new Tag() { Id = 0, Name = "Ferocious" } }.ToList()
+                Tags = new[] { new Tag() { Id = 0, Name = "Pretty" }, new Tag() { Id = 0, Name = "Ferocious" } }.ToList(),
+                PhotoUrls = new[] {"http://somewhere.com/this.img"}
             };
 
             var request = new AddPetRequest()
@@ -115,7 +116,7 @@ namespace SwaggerPlayground.Tests
 
         }
 
-        [Test, Order(1)]
+        [Test, Order(2)]
         public async Task ShouldTryToPutAPetAndFailedWithBadRequestInnerProperty()
         {
             var pet = new Pet()
@@ -135,12 +136,12 @@ namespace SwaggerPlayground.Tests
             var httpResponseMessage = await client.PostAsync($"{_host}/v2/pet", httpContent);
 
             Assert.AreEqual(HttpStatusCode.BadRequest, httpResponseMessage.StatusCode);
-            Assert.AreEqual("Body.Name : Name is required", JsonConvert.DeserializeObject<string>(await httpResponseMessage.Content.ReadAsStringAsync()));
+            Assert.AreEqual("Name : 'Name' must not be empty. | Name : Name is required | PhotoUrls : PhotoUrls is required", JsonConvert.DeserializeObject<string>(await httpResponseMessage.Content.ReadAsStringAsync()));
 
 
         }
 
-        [Test, Order(2)]
+        [Test, Order(3)]
         public async Task ShouldGetAPet()
         {
             var client = new HttpClient();
@@ -154,12 +155,12 @@ namespace SwaggerPlayground.Tests
         }
 
 
-        [Test, Order(3)]
+        [Test, Order(4)]
         public async Task ShouldUpdateAPet()
         {
         }
 
-        [Test, Order(4)]
+        [Test, Order(5)]
         public async Task ShoulTryGetAPetAndFailedWithNotFound()
         {
             var client = new HttpClient();
