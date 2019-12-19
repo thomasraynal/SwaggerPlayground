@@ -32,15 +32,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class FindPetsByStatus400Exception : Exception, IHasHttpServiceError
+public class HttpResponseFindPetsByStatus400Exception : Exception, IHasHttpServiceError
 {
-    public FindPetsByStatus400Exception()
+    public HttpResponseFindPetsByStatus400Exception()
         : base() { }
 
-    public FindPetsByStatus400Exception(string message)
+    public HttpResponseFindPetsByStatus400Exception(string message)
         : base(message) { }
 
-    public FindPetsByStatus400Exception(string message, Exception innerException)
+    public HttpResponseFindPetsByStatus400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -49,9 +49,9 @@ public class FindPetsByStatus400Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class FindPetsByStatusRequestValidator : AbstractValidator<FindPetsByStatusRequest>
+    public abstract class FindPetsByStatusRequestValidatorBase : AbstractValidator<FindPetsByStatusRequest>
     {
-        public FindPetsByStatusRequestValidator()
+        public FindPetsByStatusRequestValidatorBase()
         {
         }
     }

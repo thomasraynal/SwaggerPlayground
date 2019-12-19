@@ -34,15 +34,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class UpdateUser400Exception : Exception, IHasHttpServiceError
+public class HttpResponseUpdateUser400Exception : Exception, IHasHttpServiceError
 {
-    public UpdateUser400Exception()
+    public HttpResponseUpdateUser400Exception()
         : base() { }
 
-    public UpdateUser400Exception(string message)
+    public HttpResponseUpdateUser400Exception(string message)
         : base(message) { }
 
-    public UpdateUser400Exception(string message, Exception innerException)
+    public HttpResponseUpdateUser400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -50,15 +50,15 @@ public class UpdateUser400Exception : Exception, IHasHttpServiceError
     public string Details => Message;
 }
 
-public class UpdateUser404Exception : Exception, IHasHttpServiceError
+public class HttpResponseUpdateUser404Exception : Exception, IHasHttpServiceError
 {
-    public UpdateUser404Exception()
+    public HttpResponseUpdateUser404Exception()
         : base() { }
 
-    public UpdateUser404Exception(string message)
+    public HttpResponseUpdateUser404Exception(string message)
         : base(message) { }
 
-    public UpdateUser404Exception(string message, Exception innerException)
+    public HttpResponseUpdateUser404Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)404;
@@ -67,9 +67,9 @@ public class UpdateUser404Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class UpdateUserRequestValidator : AbstractValidator<UpdateUserRequest>
+    public abstract class UpdateUserRequestValidatorBase : AbstractValidator<UpdateUserRequest>
     {
-        public UpdateUserRequestValidator()
+        public UpdateUserRequestValidatorBase()
         {
                     RuleFor(request => request.Username).NotNull().NotEmpty().WithMessage("Username is required");
         }

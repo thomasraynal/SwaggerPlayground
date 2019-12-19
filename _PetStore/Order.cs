@@ -37,9 +37,9 @@ namespace SwaggerPlayground.Modules.PetStore
 //        }
     }
 
-    public class OrderValidator : AbstractValidator<Order>
+    public abstract class OrderValidatorBase : AbstractValidator<Order>
     {
-        public OrderValidator()
+        public OrderValidatorBase()
         {
         }
     }

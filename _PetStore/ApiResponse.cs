@@ -31,9 +31,9 @@ namespace SwaggerPlayground.Modules.PetStore
 //        }
     }
 
-    public class ApiResponseValidator : AbstractValidator<ApiResponse>
+    public abstract class ApiResponseValidatorBase : AbstractValidator<ApiResponse>
     {
-        public ApiResponseValidator()
+        public ApiResponseValidatorBase()
         {
         }
     }

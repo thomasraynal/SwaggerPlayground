@@ -31,9 +31,9 @@ namespace SwaggerPlayground.Modules.PetStore
 
 
 
-    public class GetInventoryRequestValidator : AbstractValidator<GetInventoryRequest>
+    public abstract class GetInventoryRequestValidatorBase : AbstractValidator<GetInventoryRequest>
     {
-        public GetInventoryRequestValidator()
+        public GetInventoryRequestValidatorBase()
         {
         }
     }

@@ -32,15 +32,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class GetOrderById400Exception : Exception, IHasHttpServiceError
+public class HttpResponseGetOrderById400Exception : Exception, IHasHttpServiceError
 {
-    public GetOrderById400Exception()
+    public HttpResponseGetOrderById400Exception()
         : base() { }
 
-    public GetOrderById400Exception(string message)
+    public HttpResponseGetOrderById400Exception(string message)
         : base(message) { }
 
-    public GetOrderById400Exception(string message, Exception innerException)
+    public HttpResponseGetOrderById400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -48,15 +48,15 @@ public class GetOrderById400Exception : Exception, IHasHttpServiceError
     public string Details => Message;
 }
 
-public class GetOrderById404Exception : Exception, IHasHttpServiceError
+public class HttpResponseGetOrderById404Exception : Exception, IHasHttpServiceError
 {
-    public GetOrderById404Exception()
+    public HttpResponseGetOrderById404Exception()
         : base() { }
 
-    public GetOrderById404Exception(string message)
+    public HttpResponseGetOrderById404Exception(string message)
         : base(message) { }
 
-    public GetOrderById404Exception(string message, Exception innerException)
+    public HttpResponseGetOrderById404Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)404;
@@ -65,9 +65,9 @@ public class GetOrderById404Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class GetOrderByIdRequestValidator : AbstractValidator<GetOrderByIdRequest>
+    public abstract class GetOrderByIdRequestValidatorBase : AbstractValidator<GetOrderByIdRequest>
     {
-        public GetOrderByIdRequestValidator()
+        public GetOrderByIdRequestValidatorBase()
         {
                     RuleFor(request => request.OrderId).NotNull().NotEmpty().WithMessage("OrderId is required");
         }

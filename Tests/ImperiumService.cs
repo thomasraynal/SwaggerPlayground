@@ -15,7 +15,7 @@ namespace SwaggerPlayground.Tests
 
         public Task GetActiveCards(GetActiveCardsRequest request)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         public Task GetCards(GetCardsRequest request)

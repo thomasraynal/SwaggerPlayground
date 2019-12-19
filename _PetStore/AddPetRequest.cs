@@ -32,15 +32,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class AddPet400Exception : Exception, IHasHttpServiceError
+public class HttpResponseAddPet400Exception : Exception, IHasHttpServiceError
 {
-    public AddPet400Exception()
+    public HttpResponseAddPet400Exception()
         : base() { }
 
-    public AddPet400Exception(string message)
+    public HttpResponseAddPet400Exception(string message)
         : base(message) { }
 
-    public AddPet400Exception(string message, Exception innerException)
+    public HttpResponseAddPet400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -48,15 +48,15 @@ public class AddPet400Exception : Exception, IHasHttpServiceError
     public string Details => Message;
 }
 
-public class AddPet405Exception : Exception, IHasHttpServiceError
+public class HttpResponseAddPet405Exception : Exception, IHasHttpServiceError
 {
-    public AddPet405Exception()
+    public HttpResponseAddPet405Exception()
         : base() { }
 
-    public AddPet405Exception(string message)
+    public HttpResponseAddPet405Exception(string message)
         : base(message) { }
 
-    public AddPet405Exception(string message, Exception innerException)
+    public HttpResponseAddPet405Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)405;
@@ -65,9 +65,9 @@ public class AddPet405Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class AddPetRequestValidator : AbstractValidator<AddPetRequest>
+    public abstract class AddPetRequestValidatorBase : AbstractValidator<AddPetRequest>
     {
-        public AddPetRequestValidator()
+        public AddPetRequestValidatorBase()
         {
                     RuleFor(request => request.Body).NotNull().WithMessage("Body is required");
         }

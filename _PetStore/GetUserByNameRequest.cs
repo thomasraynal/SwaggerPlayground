@@ -32,15 +32,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class GetUserByName400Exception : Exception, IHasHttpServiceError
+public class HttpResponseGetUserByName400Exception : Exception, IHasHttpServiceError
 {
-    public GetUserByName400Exception()
+    public HttpResponseGetUserByName400Exception()
         : base() { }
 
-    public GetUserByName400Exception(string message)
+    public HttpResponseGetUserByName400Exception(string message)
         : base(message) { }
 
-    public GetUserByName400Exception(string message, Exception innerException)
+    public HttpResponseGetUserByName400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -48,15 +48,15 @@ public class GetUserByName400Exception : Exception, IHasHttpServiceError
     public string Details => Message;
 }
 
-public class GetUserByName404Exception : Exception, IHasHttpServiceError
+public class HttpResponseGetUserByName404Exception : Exception, IHasHttpServiceError
 {
-    public GetUserByName404Exception()
+    public HttpResponseGetUserByName404Exception()
         : base() { }
 
-    public GetUserByName404Exception(string message)
+    public HttpResponseGetUserByName404Exception(string message)
         : base(message) { }
 
-    public GetUserByName404Exception(string message, Exception innerException)
+    public HttpResponseGetUserByName404Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)404;
@@ -65,9 +65,9 @@ public class GetUserByName404Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class GetUserByNameRequestValidator : AbstractValidator<GetUserByNameRequest>
+    public abstract class GetUserByNameRequestValidatorBase : AbstractValidator<GetUserByNameRequest>
     {
-        public GetUserByNameRequestValidator()
+        public GetUserByNameRequestValidatorBase()
         {
                     RuleFor(request => request.Username).NotNull().NotEmpty().WithMessage("Username is required");
         }

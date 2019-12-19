@@ -41,9 +41,9 @@ namespace SwaggerPlayground.Modules.PetStore
 //        }
     }
 
-    public class UserValidator : AbstractValidator<User>
+    public abstract class UserValidatorBase : AbstractValidator<User>
     {
-        public UserValidator()
+        public UserValidatorBase()
         {
         }
     }

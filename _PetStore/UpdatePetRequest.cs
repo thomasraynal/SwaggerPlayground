@@ -32,15 +32,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class UpdatePet400Exception : Exception, IHasHttpServiceError
+public class HttpResponseUpdatePet400Exception : Exception, IHasHttpServiceError
 {
-    public UpdatePet400Exception()
+    public HttpResponseUpdatePet400Exception()
         : base() { }
 
-    public UpdatePet400Exception(string message)
+    public HttpResponseUpdatePet400Exception(string message)
         : base(message) { }
 
-    public UpdatePet400Exception(string message, Exception innerException)
+    public HttpResponseUpdatePet400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -48,15 +48,15 @@ public class UpdatePet400Exception : Exception, IHasHttpServiceError
     public string Details => Message;
 }
 
-public class UpdatePet404Exception : Exception, IHasHttpServiceError
+public class HttpResponseUpdatePet404Exception : Exception, IHasHttpServiceError
 {
-    public UpdatePet404Exception()
+    public HttpResponseUpdatePet404Exception()
         : base() { }
 
-    public UpdatePet404Exception(string message)
+    public HttpResponseUpdatePet404Exception(string message)
         : base(message) { }
 
-    public UpdatePet404Exception(string message, Exception innerException)
+    public HttpResponseUpdatePet404Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)404;
@@ -64,15 +64,15 @@ public class UpdatePet404Exception : Exception, IHasHttpServiceError
     public string Details => Message;
 }
 
-public class UpdatePet405Exception : Exception, IHasHttpServiceError
+public class HttpResponseUpdatePet405Exception : Exception, IHasHttpServiceError
 {
-    public UpdatePet405Exception()
+    public HttpResponseUpdatePet405Exception()
         : base() { }
 
-    public UpdatePet405Exception(string message)
+    public HttpResponseUpdatePet405Exception(string message)
         : base(message) { }
 
-    public UpdatePet405Exception(string message, Exception innerException)
+    public HttpResponseUpdatePet405Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)405;
@@ -81,9 +81,9 @@ public class UpdatePet405Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class UpdatePetRequestValidator : AbstractValidator<UpdatePetRequest>
+    public abstract class UpdatePetRequestValidatorBase : AbstractValidator<UpdatePetRequest>
     {
-        public UpdatePetRequestValidator()
+        public UpdatePetRequestValidatorBase()
         {
         }
     }

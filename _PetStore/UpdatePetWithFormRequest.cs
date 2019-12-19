@@ -36,15 +36,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class UpdatePetWithForm405Exception : Exception, IHasHttpServiceError
+public class HttpResponseUpdatePetWithForm405Exception : Exception, IHasHttpServiceError
 {
-    public UpdatePetWithForm405Exception()
+    public HttpResponseUpdatePetWithForm405Exception()
         : base() { }
 
-    public UpdatePetWithForm405Exception(string message)
+    public HttpResponseUpdatePetWithForm405Exception(string message)
         : base(message) { }
 
-    public UpdatePetWithForm405Exception(string message, Exception innerException)
+    public HttpResponseUpdatePetWithForm405Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)405;
@@ -53,9 +53,9 @@ public class UpdatePetWithForm405Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class UpdatePetWithFormRequestValidator : AbstractValidator<UpdatePetWithFormRequest>
+    public abstract class UpdatePetWithFormRequestValidatorBase : AbstractValidator<UpdatePetWithFormRequest>
     {
-        public UpdatePetWithFormRequestValidator()
+        public UpdatePetWithFormRequestValidatorBase()
         {
                     RuleFor(request => request.PetId).NotNull().NotEmpty().WithMessage("PetId is required");
         }

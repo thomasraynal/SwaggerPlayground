@@ -10,8 +10,6 @@ using SwaggerPlayground.Common;
 using SwaggerPlayground.Modules.PetStore;
 using SwaggerPlayground.Modules.Resources;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SwaggerPlayground.Tests
 {

@@ -32,15 +32,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class GetPetById400Exception : Exception, IHasHttpServiceError
+public class HttpResponseGetPetById400Exception : Exception, IHasHttpServiceError
 {
-    public GetPetById400Exception()
+    public HttpResponseGetPetById400Exception()
         : base() { }
 
-    public GetPetById400Exception(string message)
+    public HttpResponseGetPetById400Exception(string message)
         : base(message) { }
 
-    public GetPetById400Exception(string message, Exception innerException)
+    public HttpResponseGetPetById400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -48,15 +48,15 @@ public class GetPetById400Exception : Exception, IHasHttpServiceError
     public string Details => Message;
 }
 
-public class GetPetById404Exception : Exception, IHasHttpServiceError
+public class HttpResponseGetPetById404Exception : Exception, IHasHttpServiceError
 {
-    public GetPetById404Exception()
+    public HttpResponseGetPetById404Exception()
         : base() { }
 
-    public GetPetById404Exception(string message)
+    public HttpResponseGetPetById404Exception(string message)
         : base(message) { }
 
-    public GetPetById404Exception(string message, Exception innerException)
+    public HttpResponseGetPetById404Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)404;
@@ -65,9 +65,9 @@ public class GetPetById404Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class GetPetByIdRequestValidator : AbstractValidator<GetPetByIdRequest>
+    public abstract class GetPetByIdRequestValidatorBase : AbstractValidator<GetPetByIdRequest>
     {
-        public GetPetByIdRequestValidator()
+        public GetPetByIdRequestValidatorBase()
         {
                     RuleFor(request => request.PetId).NotNull().WithMessage("PetId is required");
         }

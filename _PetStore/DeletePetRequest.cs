@@ -34,15 +34,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class DeletePet400Exception : Exception, IHasHttpServiceError
+public class HttpResponseDeletePet400Exception : Exception, IHasHttpServiceError
 {
-    public DeletePet400Exception()
+    public HttpResponseDeletePet400Exception()
         : base() { }
 
-    public DeletePet400Exception(string message)
+    public HttpResponseDeletePet400Exception(string message)
         : base(message) { }
 
-    public DeletePet400Exception(string message, Exception innerException)
+    public HttpResponseDeletePet400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -51,9 +51,9 @@ public class DeletePet400Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class DeletePetRequestValidator : AbstractValidator<DeletePetRequest>
+    public abstract class DeletePetRequestValidatorBase : AbstractValidator<DeletePetRequest>
     {
-        public DeletePetRequestValidator()
+        public DeletePetRequestValidatorBase()
         {
                     RuleFor(request => request.PetId).NotNull().WithMessage("PetId is required");
         }

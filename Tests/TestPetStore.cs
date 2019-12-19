@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using SwaggerPlayground.Modules.PetStore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -16,21 +13,18 @@ namespace SwaggerPlayground.Tests
 {
     //todo: handle - allowEmptyValue: true
     //todo: handle - default: 20
-    //todo: hanlde - required: true
     //todo: handle - minimum: 1
 
-    //todo: handle automatic nested object validation
+    //todo: create _generated folder and arborescence
 
-    //todo: handle produce/consume
-    //todo: handle security issues
     //todo: set x-product properties
 
     [TestFixture]
     public class TestPetStore
     {
         private CancellationTokenSource _cancellationTokenSource;
-        private string _host;
-        private Task _serverTask;
+        private string _hostUri;
+        private IWebHost _host;
 
         //private TestServer _server;
         //private HttpClient _client;
@@ -48,24 +42,27 @@ namespace SwaggerPlayground.Tests
 
             _cancellationTokenSource = new CancellationTokenSource();
 
-            _host = "http://localhost:8080";
+            _hostUri = "http://localhost:8080";
 
-            _serverTask = Task.Run(() =>
+            var task = Task.Run(() =>
              {
-                 var host = new WebHostBuilder()
+                 _host = new WebHostBuilder()
                  .UseKestrel()
-                 .UseUrls("http://localhost:8080")
+                 .UseUrls(_hostUri)
                  .UseStartup<TestStartup>()
                  .Build();
 
-                 host.Run();
+                 _host.Run();
+
              }, _cancellationTokenSource.Token);
 
         }
 
         [OneTimeTearDown]
-        public void TearDown()
+        public async Task TearDown()
         {
+            await _host.StopAsync();
+
             _cancellationTokenSource.Cancel();
 
             //if (null != _server) _server.Dispose();
@@ -82,7 +79,7 @@ namespace SwaggerPlayground.Tests
                 Id = 0,
                 Status = Status.Available,
                 Tags = new[] { new Tag() { Id = 0, Name = "Pretty" }, new Tag() { Id = 0, Name = "Ferocious" } }.ToList(),
-                PhotoUrls = new[] {"http://somewhere.com/this.img"}
+                PhotoUrls = new[] { "http://somewhere.com/this.img" }
             };
 
             var request = new AddPetRequest()
@@ -92,14 +89,14 @@ namespace SwaggerPlayground.Tests
 
             var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
             var client = new HttpClient();
-            var httpResponseMessage = await client.PostAsync($"{_host}/v2/pet", httpContent);
+            var httpResponseMessage = await client.PostAsync($"{_hostUri}/v2/pet", httpContent);
 
             Assert.AreEqual(HttpStatusCode.Created, httpResponseMessage.StatusCode);
             Assert.AreEqual(request.Body, JsonConvert.DeserializeObject<Pet>(await httpResponseMessage.Content.ReadAsStringAsync()));
         }
 
         [Test, Order(1)]
-        public async Task ShouldTryToPutAPetAndFailedWithBadRequestOuterProperty()
+        public async Task ShouldTryToPutAPetAndFailWithBadRequestOuterProperty()
         {
             var request = new AddPetRequest()
             {
@@ -108,7 +105,7 @@ namespace SwaggerPlayground.Tests
 
             var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
             var client = new HttpClient();
-            var httpResponseMessage = await client.PostAsync($"{_host}/v2/pet", httpContent);
+            var httpResponseMessage = await client.PostAsync($"{_hostUri}/v2/pet", httpContent);
 
             Assert.AreEqual(HttpStatusCode.BadRequest, httpResponseMessage.StatusCode);
             Assert.AreEqual("Body : Body is required", JsonConvert.DeserializeObject<string>(await httpResponseMessage.Content.ReadAsStringAsync()));
@@ -117,7 +114,7 @@ namespace SwaggerPlayground.Tests
         }
 
         [Test, Order(2)]
-        public async Task ShouldTryToPutAPetAndFailedWithBadRequestInnerProperty()
+        public async Task ShouldTryToPutAPetAndFailWithBadRequestInnerProperty()
         {
             var pet = new Pet()
             {
@@ -133,7 +130,7 @@ namespace SwaggerPlayground.Tests
 
             var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
             var client = new HttpClient();
-            var httpResponseMessage = await client.PostAsync($"{_host}/v2/pet", httpContent);
+            var httpResponseMessage = await client.PostAsync($"{_hostUri}/v2/pet", httpContent);
 
             Assert.AreEqual(HttpStatusCode.BadRequest, httpResponseMessage.StatusCode);
             Assert.AreEqual("Name : 'Name' must not be empty. | Name : Name is required | PhotoUrls : PhotoUrls is required", JsonConvert.DeserializeObject<string>(await httpResponseMessage.Content.ReadAsStringAsync()));
@@ -145,7 +142,7 @@ namespace SwaggerPlayground.Tests
         public async Task ShouldGetAPet()
         {
             var client = new HttpClient();
-            var httpResponseMessage = await client.GetAsync($"{_host}/v2/pet/0");
+            var httpResponseMessage = await client.GetAsync($"{_hostUri}/v2/pet/0");
 
             Assert.AreEqual(HttpStatusCode.OK, httpResponseMessage.StatusCode);
 
@@ -158,18 +155,81 @@ namespace SwaggerPlayground.Tests
         [Test, Order(4)]
         public async Task ShouldUpdateAPet()
         {
+            var pet = new Pet()
+            {
+                Name = "Choupette",
+                Category = new Category() { Id = 0, Name = "Dog2" },
+                Status = Status.Available,
+                Tags = new[] { new Tag() { Id = 0, Name = "Pretty" }, new Tag() { Id = 0, Name = "Ferocious" } }.ToList(),
+                PhotoUrls = new[] { "http://somewhere.com/this.img" }
+            };
+
+            var request = new UpdatePetRequest()
+            {
+                Body = pet
+            };
+
+            var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            var httpResponseMessage = await client.PutAsync($"{_hostUri}/v2/pet", httpContent);
+
+            Assert.AreEqual(HttpStatusCode.OK, httpResponseMessage.StatusCode);
         }
 
+
         [Test, Order(5)]
-        public async Task ShoulTryGetAPetAndFailedWithNotFound()
+        public async Task ShouldTryToUpdateAPetAndFailWithBadRequest()
+        {
+            var pet = new Pet()
+            {
+                Category = new Category() { Id = 0, Name = "ThisCategoryIsNotAllowed" },
+                Name = "Choupette",
+                Id = 0,
+                Status = Status.Available,
+                Tags = new[] { new Tag() { Id = 0, Name = "Pretty" }, new Tag() { Id = 0, Name = "Ferocious" } }.ToList(),
+                PhotoUrls = new[] { "http://somewhere.com/this.img" }
+            };
+
+            var request = new UpdatePetRequest()
+            {
+                Body = pet
+            };
+
+            var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+            var httpResponseMessage = await client.PutAsync($"{_hostUri}/v2/pet", httpContent);
+
+            Assert.AreEqual(HttpStatusCode.BadRequest, httpResponseMessage.StatusCode);
+            Assert.AreEqual("Category : Category must be allowed", JsonConvert.DeserializeObject<string>(await httpResponseMessage.Content.ReadAsStringAsync()));
+        }
+
+        [Test, Order(6)]
+        public async Task ShoulTryGetAPetAndFailWithNotFound()
         {
             var client = new HttpClient();
-            var httpResponseMessage = await client.GetAsync($"{_host}/v2/pet/1");
+            var httpResponseMessage = await client.GetAsync($"{_hostUri}/v2/pet/1");
 
             Assert.AreEqual(HttpStatusCode.NotFound, httpResponseMessage.StatusCode);
             Assert.AreEqual("Pet 1 not found", JsonConvert.DeserializeObject<string>(await httpResponseMessage.Content.ReadAsStringAsync()));
         }
 
+        [Test, Order(7)]
+        public async Task ShouldTryToDeleteAPetAndFailWithNotAuthorized()
+        {
+            var client = new HttpClient();
+            var httpResponseMessage = await client.DeleteAsync($"{_hostUri}/v2/pet/0");
+
+            Assert.AreEqual(HttpStatusCode.Unauthorized, httpResponseMessage.StatusCode);
+
+        }
+
+        [Test, Order(8)]
+        public async Task ShouldDeleteAPet()
+        {
+
+
+
+        }
 
     }
 }

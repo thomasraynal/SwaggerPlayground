@@ -37,9 +37,9 @@ namespace SwaggerPlayground.Modules.PetStore
 
 
 
-    public class UploadFileRequestValidator : AbstractValidator<UploadFileRequest>
+    public abstract class UploadFileRequestValidatorBase : AbstractValidator<UploadFileRequest>
     {
-        public UploadFileRequestValidator()
+        public UploadFileRequestValidatorBase()
         {
                     RuleFor(request => request.PetId).NotNull().WithMessage("PetId is required");
         }

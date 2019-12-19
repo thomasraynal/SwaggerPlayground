@@ -34,15 +34,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class LoginUser400Exception : Exception, IHasHttpServiceError
+public class HttpResponseLoginUser400Exception : Exception, IHasHttpServiceError
 {
-    public LoginUser400Exception()
+    public HttpResponseLoginUser400Exception()
         : base() { }
 
-    public LoginUser400Exception(string message)
+    public HttpResponseLoginUser400Exception(string message)
         : base(message) { }
 
-    public LoginUser400Exception(string message, Exception innerException)
+    public HttpResponseLoginUser400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -51,9 +51,9 @@ public class LoginUser400Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class LoginUserRequestValidator : AbstractValidator<LoginUserRequest>
+    public abstract class LoginUserRequestValidatorBase : AbstractValidator<LoginUserRequest>
     {
-        public LoginUserRequestValidator()
+        public LoginUserRequestValidatorBase()
         {
         }
     }

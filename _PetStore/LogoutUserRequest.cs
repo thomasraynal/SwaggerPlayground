@@ -31,9 +31,9 @@ namespace SwaggerPlayground.Modules.PetStore
 
 
 
-    public class LogoutUserRequestValidator : AbstractValidator<LogoutUserRequest>
+    public abstract class LogoutUserRequestValidatorBase : AbstractValidator<LogoutUserRequest>
     {
-        public LogoutUserRequestValidator()
+        public LogoutUserRequestValidatorBase()
         {
         }
     }

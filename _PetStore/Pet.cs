@@ -37,9 +37,9 @@ namespace SwaggerPlayground.Modules.PetStore
 //        }
     }
 
-    public class PetValidator : AbstractValidator<Pet>
+    public abstract class PetValidatorBase : AbstractValidator<Pet>
     {
-        public PetValidator()
+        public PetValidatorBase()
         {
                                     RuleFor(dto => dto.Name).NotNull().NotEmpty().WithMessage("Name is required");
                                     RuleFor(dto => dto.PhotoUrls).NotNull().WithMessage("PhotoUrls is required");

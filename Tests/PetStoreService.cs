@@ -73,7 +73,7 @@ namespace SwaggerPlayground.Tests
         {
             var result = _pets.FirstOrDefault(pet => pet.Id == request.PetId);
 
-            if (null == result) throw new GetPetById404Exception($"Pet {request.PetId} not found");
+            if (null == result) throw new HttpResponseGetPetById404Exception($"Pet {request.PetId} not found");
 
             return Task.FromResult(result);
 
@@ -101,7 +101,16 @@ namespace SwaggerPlayground.Tests
 
         public Task UpdatePet(UpdatePetRequest request)
         {
-            throw new NotImplementedException();
+            var removed = _pets.FirstOrDefault(pet => pet.Id == request.Body.Id);
+
+            if (null == removed)
+            {
+                _pets.Remove(request.Body);
+            }
+
+            _pets.Add(request.Body);
+
+            return Task.CompletedTask;
         }
 
         public Task UpdatePetWithForm(UpdatePetWithFormRequest request)

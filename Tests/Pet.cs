@@ -1,9 +1,18 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SwaggerPlayground.Modules.PetStore
 {
+    public class PetValidator : PetValidatorBase
+    {
+        public PetValidator()
+        {
+            RuleFor(dto => dto.Category).Must(category=> category.Name != "ThisCategoryIsNotAllowed") .WithMessage("Category must be allowed");
+        }
+    }
+
     public partial class Pet
     {
         public override bool Equals(object obj)
@@ -17,7 +26,6 @@ namespace SwaggerPlayground.Modules.PetStore
             {
                 var hashCode = nameof(Pet).GetHashCode();
                 hashCode = (hashCode * 397) ^ Id.GetHashCode();
-                hashCode = (hashCode * 397) ^ Name.GetHashCode();
                 return hashCode;
             }
         }

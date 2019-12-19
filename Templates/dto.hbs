@@ -33,9 +33,9 @@ namespace {{ uppercase_first_letter ../x-product.appName}}.Modules.{{uppercase_f
 //        }
     }
 
-    public class {{uppercase_first_letter @key}}Validator : AbstractValidator<{{uppercase_first_letter @key}}>
+    public abstract class {{uppercase_first_letter @key}}ValidatorBase : AbstractValidator<{{uppercase_first_letter @key}}>
     {
-        public {{uppercase_first_letter @key}}Validator()
+        public {{uppercase_first_letter @key}}ValidatorBase()
         {
             {{#each required}}
                 {{#each ../properties}} 

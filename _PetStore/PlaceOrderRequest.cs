@@ -32,15 +32,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class PlaceOrder400Exception : Exception, IHasHttpServiceError
+public class HttpResponsePlaceOrder400Exception : Exception, IHasHttpServiceError
 {
-    public PlaceOrder400Exception()
+    public HttpResponsePlaceOrder400Exception()
         : base() { }
 
-    public PlaceOrder400Exception(string message)
+    public HttpResponsePlaceOrder400Exception(string message)
         : base(message) { }
 
-    public PlaceOrder400Exception(string message, Exception innerException)
+    public HttpResponsePlaceOrder400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -49,9 +49,9 @@ public class PlaceOrder400Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class PlaceOrderRequestValidator : AbstractValidator<PlaceOrderRequest>
+    public abstract class PlaceOrderRequestValidatorBase : AbstractValidator<PlaceOrderRequest>
     {
-        public PlaceOrderRequestValidator()
+        public PlaceOrderRequestValidatorBase()
         {
         }
     }

@@ -33,9 +33,9 @@ namespace SwaggerPlayground.Modules.PetStore
 
 
 
-    public class CreateUsersWithArrayInputRequestValidator : AbstractValidator<CreateUsersWithArrayInputRequest>
+    public abstract class CreateUsersWithArrayInputRequestValidatorBase : AbstractValidator<CreateUsersWithArrayInputRequest>
     {
-        public CreateUsersWithArrayInputRequestValidator()
+        public CreateUsersWithArrayInputRequestValidatorBase()
         {
         }
     }

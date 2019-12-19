@@ -29,9 +29,9 @@ namespace SwaggerPlayground.Modules.PetStore
 //        }
     }
 
-    public class TagValidator : AbstractValidator<Tag>
+    public abstract class TagValidatorBase : AbstractValidator<Tag>
     {
-        public TagValidator()
+        public TagValidatorBase()
         {
         }
     }

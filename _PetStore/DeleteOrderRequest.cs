@@ -32,15 +32,15 @@ namespace SwaggerPlayground.Modules.PetStore
     }
 
 
-public class DeleteOrder400Exception : Exception, IHasHttpServiceError
+public class HttpResponseDeleteOrder400Exception : Exception, IHasHttpServiceError
 {
-    public DeleteOrder400Exception()
+    public HttpResponseDeleteOrder400Exception()
         : base() { }
 
-    public DeleteOrder400Exception(string message)
+    public HttpResponseDeleteOrder400Exception(string message)
         : base(message) { }
 
-    public DeleteOrder400Exception(string message, Exception innerException)
+    public HttpResponseDeleteOrder400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -48,15 +48,15 @@ public class DeleteOrder400Exception : Exception, IHasHttpServiceError
     public string Details => Message;
 }
 
-public class DeleteOrder404Exception : Exception, IHasHttpServiceError
+public class HttpResponseDeleteOrder404Exception : Exception, IHasHttpServiceError
 {
-    public DeleteOrder404Exception()
+    public HttpResponseDeleteOrder404Exception()
         : base() { }
 
-    public DeleteOrder404Exception(string message)
+    public HttpResponseDeleteOrder404Exception(string message)
         : base(message) { }
 
-    public DeleteOrder404Exception(string message, Exception innerException)
+    public HttpResponseDeleteOrder404Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)404;
@@ -65,9 +65,9 @@ public class DeleteOrder404Exception : Exception, IHasHttpServiceError
 }
 
 
-    public class DeleteOrderRequestValidator : AbstractValidator<DeleteOrderRequest>
+    public abstract class DeleteOrderRequestValidatorBase : AbstractValidator<DeleteOrderRequest>
     {
-        public DeleteOrderRequestValidator()
+        public DeleteOrderRequestValidatorBase()
         {
                     RuleFor(request => request.OrderId).NotNull().NotEmpty().WithMessage("OrderId is required");
         }
