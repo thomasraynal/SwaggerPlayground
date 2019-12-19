@@ -17,8 +17,10 @@ namespace SwaggerPlayground.Tests
     //todo: handle - allowEmptyValue: true
     //todo: handle - default: 20
     //todo: hanlde - required: true
-    //todo: handle error responses via exception http handler 
-    //todo: handle required param with FluentValidation + partial class
+    //todo: handle - minimum: 1
+
+    //todo: handle automatic nested object validation
+
     //todo: handle produce/consume
     //todo: handle security issues
     //todo: set x-product properties

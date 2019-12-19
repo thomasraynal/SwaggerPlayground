@@ -1,0 +1,114 @@
+﻿swagger: '2.0'
+info:
+  version: "2"
+  title: 'Imperium API'
+  description: ''
+x-product: 
+  appName: swaggerPlayground
+  appService: imperium
+schemes:
+ - https
+basePath: /api
+host: imperium.rebbl.net
+
+paths:
+  /cracker/cards:
+    get:
+      summary: Returns a list of all active Cracker Cards.
+      operationId: getActiveCards
+      parameters:
+        - in: header
+          name: CRACKER_API_KEY
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        401:
+          description: Authorization information is missing or invalid.
+          
+  /cracker/cards/{coachName}:
+    get:
+      summary: Returns a list of all active Cracker Cards for given coachName.
+      operationId: getCards
+      parameters:
+        - in: header
+          name: CRACKER_API_KEY
+          type: string
+          required: true
+        - in: path
+          name: coachName
+          type: string
+          required: true
+          description: Name of the coach.
+        - in: query
+          name: history
+          type: integer
+          description: If provided it returns historical cards instead of active ones. 0 for previous team, 1 for team before that etc.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        401:
+          description: Authorization information is missing or invalid.
+          
+    delete:
+      summary: Deletes (deactivates) current collection for the coach
+      operationId: deleteCurrentCollection
+      parameters:
+        - in: header
+          name: CRACKER_API_KEY
+          type: string
+          required: true
+        - in: path
+          name: coachName
+          type: string
+          required: true
+          description: Name of the coach.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        401:
+          description: Authorization information is missing or invalid.
+          
+    post:
+      summary: Opens new pack for a coach returns all cards in it
+      operationId: openNewPack
+      parameters:
+        - in: header
+          name: CRACKER_API_KEY
+          type: string
+          required: true
+        - in: path
+          name: coachName
+          type: string
+          required: true
+          description: Name of the coach.
+        - in: body
+          name: pack
+          description: Pack to generate.
+          schema:
+            type: object
+            required:
+              - pack_type
+              - team
+            properties:
+              pack_type:
+                type: string
+                enum: [nice, naughty, huge bonus, immortal, stocking filler]
+              team:
+                type: string
+                enum: [aog, au, afs, cgs, cpp, egc, fea, hl, sbr, uosp, vt]
+          
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        401:
+          description: Authorization information is missing or invalid.
