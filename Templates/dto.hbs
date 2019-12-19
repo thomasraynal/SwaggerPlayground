@@ -1,5 +1,5 @@
 ﻿{{#each definitions}}
-### FILE {{uppercase_first_letter @key}}.cs
+### FILE _Generated/Dto/{{uppercase_first_letter @key}}.cs
 
 using System;
 using System.IO;
@@ -12,7 +12,7 @@ namespace {{ uppercase_first_letter ../x-product.appName}}.Modules.{{uppercase_f
     public partial class {{uppercase_first_letter @key}}
     {
 {{#each properties}}
-      public {{#one_line}}{{> typeselector }} {{uppercase_first_letter @../@key}}{{/one_line}} {get; set; }
+      public {{#one_line}}{{> typeSelector }} {{uppercase_first_letter @../@key}}{{/one_line}} {get; set; }
 {{/each}}
 
 //      public override bool Equals(object obj)
@@ -35,25 +35,25 @@ namespace {{ uppercase_first_letter ../x-product.appName}}.Modules.{{uppercase_f
 
     public abstract class {{uppercase_first_letter @key}}ValidatorBase : AbstractValidator<{{uppercase_first_letter @key}}>
     {
-        public {{uppercase_first_letter @key}}ValidatorBase()
-        {
-            {{#each required}}
-                {{#each ../properties}} 
-                    {{#if_equals this.@key ../}}
-                            {{#if_equals this.type 'string'}}
-                                    RuleFor(dto => dto.{{uppercase_first_letter @key}}).NotNull().NotEmpty().WithMessage("{{uppercase_first_letter @key}} is required");
-                                {{else}}
-                                    RuleFor(dto => dto.{{uppercase_first_letter @key}}).NotNull().WithMessage("{{uppercase_first_letter @key}} is required");
-                            {{/if_equals}}
-                    {{/if_equals}}
-                 {{/each}}
-            {{/each}}
-        }
+    public {{uppercase_first_letter @key}}ValidatorBase()
+    {
+    {{#each required}}
+    {{#each ../properties}}
+    {{#if_equals this.@key ../}}
+    {{#if_equals this.type 'string'}}
+    RuleFor(dto => dto.{{uppercase_first_letter @key}}).NotNull().NotEmpty().WithMessage("{{uppercase_first_letter @key}} is required");
+    {{else}}
+    RuleFor(dto => dto.{{uppercase_first_letter @key}}).NotNull().WithMessage("{{uppercase_first_letter @key}} is required");
+    {{/if_equals}}
+    {{/if_equals}}
+    {{/each}}
+    {{/each}}
+    }
     }
 
-}
+    }
 
 
 
-{{/each}}
+    {{/each}}
 

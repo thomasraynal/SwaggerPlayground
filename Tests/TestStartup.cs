@@ -7,6 +7,7 @@ using Nancy.Owin;
 using Nancy.Responses.Negotiation;
 using Nancy.TinyIoc;
 using SwaggerPlayground.Common;
+using SwaggerPlayground.Modules.Imperium;
 using SwaggerPlayground.Modules.PetStore;
 using SwaggerPlayground.Modules.Resources;
 using System;
@@ -45,6 +46,7 @@ namespace SwaggerPlayground.Tests
 
             container.Register<IPetStoreService, PetStoreService>();
             container.Register<IResourcesService, ResourcesService>();
+            container.Register<IImperiumService, ImperiumService>();
         }
     }
 

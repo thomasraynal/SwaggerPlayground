@@ -20,9 +20,4 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="_PetStore\" />
-    <Folder Include="_RessourceService\" />
-  </ItemGroup>
-
 </Project>

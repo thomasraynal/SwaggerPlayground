@@ -1,7 +1,7 @@
 ﻿{{#each paths}}
 {{#each this}}
 
-### FILE {{uppercase_first_letter this.operationId}}Request.cs
+### FILE _Generated/Request/{{uppercase_first_letter this.operationId}}Request.cs
 
 using System;
 using System.IO;
@@ -16,7 +16,7 @@ namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercas
     public partial class {{uppercase_first_letter this.operationId}}Request
     {
 {{#each this.parameters}}
-      public {{#one_line}}{{> typeselector }} {{uppercase_first_letter this.name}}{{/one_line}} {get; set; }
+      public {{#one_line}}{{> typeSelector }} {{uppercase_first_letter this.name}}{{/one_line}} {get; set; }
 {{/each}}
 
       public override bool Equals(object obj)
@@ -39,8 +39,8 @@ namespace {{ uppercase_first_letter ../../x-product.appName}}.Modules.{{uppercas
 
     }
 
-    {{#each this.responses}}
-        {{#with_matching @key '400' . '401' . '402' . '403' . '404' . '405' . '406' . '407' . '408' . '409' . '410' .}}
+{{#each this.responses}}
+{{#with_matching @key '400' . '401' . '402' . '403' . '404' . '405' . '406' . '407' . '408' . '409' . '410' .}}
 
 public class HttpResponse{{uppercase_first_letter ../../this.operationId}}{{@key}}Exception : Exception, IHasHttpServiceError
 {
@@ -57,26 +57,26 @@ public class HttpResponse{{uppercase_first_letter ../../this.operationId}}{{@key
 
     public string Details => Message;
 }
-        {{/with_matching}}
-    {{/each}}
+{{/with_matching}}
+{{/each}}
 
 
     public abstract class {{uppercase_first_letter this.operationId}}RequestValidatorBase : AbstractValidator<{{uppercase_first_letter this.operationId}}Request>
     {
-        public {{uppercase_first_letter this.operationId}}RequestValidatorBase()
-        {
-            {{#each this.parameters}}
-             {{#with_matching this.required 'true' . }}
-                {{#if_equals this.type 'string'}}
-                    RuleFor(request => request.{{uppercase_first_letter this.name}}).NotNull().NotEmpty().WithMessage("{{uppercase_first_letter this.name}} is required");
-                {{else}}
-                    RuleFor(request => request.{{uppercase_first_letter this.name}}).NotNull().WithMessage("{{uppercase_first_letter this.name}} is required");
-                {{/if_equals}}
-             {{/with_matching}}
-            {{/each}}
-        }
+    public {{uppercase_first_letter this.operationId}}RequestValidatorBase()
+    {
+    {{#each this.parameters}}
+    {{#with_matching this.required 'true' . }}
+    {{#if_equals this.type 'string'}}
+    RuleFor(request => request.{{uppercase_first_letter this.name}}).NotNull().NotEmpty().WithMessage("{{uppercase_first_letter this.name}} is required");
+    {{else}}
+    RuleFor(request => request.{{uppercase_first_letter this.name}}).NotNull().WithMessage("{{uppercase_first_letter this.name}} is required");
+    {{/if_equals}}
+    {{/with_matching}}
+    {{/each}}
+    }
     }
 
-}
-{{/each}}
-{{/each}}
+    }
+    {{/each}}
+    {{/each}}

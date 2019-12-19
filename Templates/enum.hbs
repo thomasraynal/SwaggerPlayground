@@ -1,7 +1,7 @@
 {{#each definitions}}
     {{#each properties}}
         {{#if_not_empty enum}}
-### FILE {{uppercase_first_letter @key}}.cs
+### FILE _Generated/Shared/{{uppercase_first_letter @key}}.cs
 public enum {{uppercase_first_letter @key}} {
 
 {{#each this.enum}}    

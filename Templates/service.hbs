@@ -1,4 +1,4 @@
-﻿### FILE I{{uppercase_first_letter x-product.appService}}Service.cs
+﻿### FILE _Generated/Service/I{{uppercase_first_letter x-product.appService}}Service.cs
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,7 +10,7 @@ namespace {{ uppercase_first_letter x-product.appName}}.Modules.{{uppercase_firs
 {{#each paths}}
 {{#each this}}
 
-{{#one_line}}{{> typesresponse}}  {{uppercase_first_letter this.operationId}}({{uppercase_first_letter this.operationId}}Request request);{{/one_line}}
+{{#one_line}}{{> typesResponse}}  {{uppercase_first_letter this.operationId}}({{uppercase_first_letter this.operationId}}Request request);{{/one_line}}
 
 {{/each}}
 {{/each}}

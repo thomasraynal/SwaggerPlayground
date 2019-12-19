@@ -15,9 +15,9 @@ namespace SwaggerPlayground.Tests
     //todo: handle - default: 20
     //todo: handle - minimum: 1
 
-    //todo: create _generated folder and arborescence
-
     //todo: set x-product properties
+
+    //todo: handle header binding (not handled by Nancy...)
 
     [TestFixture]
     public class TestPetStore
@@ -226,7 +226,11 @@ namespace SwaggerPlayground.Tests
         [Test, Order(8)]
         public async Task ShouldDeleteAPet()
         {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", "basic qfsfsfsfsd");
+            var httpResponseMessage = await client.DeleteAsync($"{_hostUri}/v2/pet/0");
 
+            Assert.AreEqual(HttpStatusCode.OK, httpResponseMessage.StatusCode);
 
 
         }
