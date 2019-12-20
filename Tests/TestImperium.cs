@@ -22,7 +22,7 @@ namespace SwaggerPlayground.Tests
         private IWebHost _host;
 
         [OneTimeSetUp]
-        public void Startup()
+        public async Task Startup()
         {
             _cancellationTokenSource = new CancellationTokenSource();
 
@@ -39,6 +39,8 @@ namespace SwaggerPlayground.Tests
                 _host.Run();
 
             }, _cancellationTokenSource.Token);
+
+            await Task.Delay(1000);
 
         }
 

@@ -11,50 +11,17 @@ using SwaggerPlayground.Modules.Imperium;
 using SwaggerPlayground.Modules.PetStore;
 using SwaggerPlayground.Modules.Resources;
 using System;
+using System.Collections.Generic;
 
 namespace SwaggerPlayground.Tests
 {
-    public class DemoBootstrapper : DefaultNancyBootstrapper
-    {
 
-        public DemoBootstrapper()
-        {
-        }
-
-        protected override Func<ITypeCatalog, NancyInternalConfiguration> InternalConfiguration
-        {
-            get
-            {
-                return NancyInternalConfiguration.WithOverrides(
-                       (configuration) =>
-                       {
-                           configuration.ResponseProcessors.Clear();
-                           configuration.ResponseProcessors.Add(typeof(JsonProcessor));
-                       });
-            }
-
-        }
-
-        protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
-        {
-            CustomErrorHandler.Enable(pipelines, container.Resolve<IResponseNegotiator>());
-        }
-
-        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
-        {
-            base.ConfigureApplicationContainer(container);
-
-            container.Register<IPetStoreService, PetStoreService>();
-            container.Register<IResourcesService, ResourcesService>();
-            container.Register<IImperiumService, ImperiumService>();
-        }
-    }
 
     public class TestStartup
     {
         public void Configure(IApplicationBuilder app)
         {
-            app.UseOwin(configuration => configuration.UseNancy(options => options.Bootstrapper = new DemoBootstrapper()));
+            app.UseOwin(configuration => configuration.UseNancy(options => options.Bootstrapper = new TestBootstrapper()));
         }
 
         public void ConfigureServices(IServiceCollection services)

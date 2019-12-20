@@ -17,8 +17,6 @@ namespace SwaggerPlayground.Tests
 
     //todo: set x-product properties
 
-    //todo: handle header binding (not handled by Nancy...)
-
     [TestFixture]
     public class TestPetStore
     {
