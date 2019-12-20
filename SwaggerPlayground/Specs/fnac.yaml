@@ -1,0 +1,255 @@
+﻿swagger: '2.0'
+info:
+  version: "1.0"
+  title: Fnac
+  description: |
+    Description
+  x-logo:
+    url: "https://avatars0.githubusercontent.com/u/25665430"
+    backgroundColor: "#FFFFFF"
+x-product: 
+  appName: fnacApp
+  appService: fnac
+
+  contact:
+    email: help@beezup.com
+
+  license:
+    name: BeezUP
+    url: http://www.beezup.com
+
+x-beezup-ops:
+  codeGenType: webapi
+  useBeezUPFrameworkVersion2: true
+  product: IMN-ADPT
+  group: IMN-ADPT
+  repo: IMN-ADPT
+  applicationShortName: Fnac.RA
+  appRoot: Fnac.RestAPI
+  namespace: Fnac.RestAPI
+  apiName: FnacV1
+  comment: 'First document'
+
+
+externalDocs:
+  description: 'Fnac API documentation'
+  url: 'https://marketplace.ws.fd-recette.net/docs/api/2.6/index.html'
+
+schemes:
+  - https
+
+tags:
+- name: 'Global'
+  description: 'All global operations'
+
+consumes:
+  - 'application/xml'
+produces:
+  - 'application/xml'
+
+responses: {}
+
+paths:
+
+  '/auth':
+    post:
+      tags:
+      - Global
+      operationId: 'GetAuthentication'
+      summary: 'This service is used to retrieve a connection token from our server which is necessary to call any authenticated services.'
+      parameters:
+      - name: request
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth'
+      responses:
+        200:
+          description: 'Response of auth'
+          schema: 
+            $ref: '#/definitions/auth_response'
+          
+  '/offers_update':
+    post:
+      tags:
+      - Global
+      operationId: 'PushOffersUpdate'
+      summary: 'This service is used to manage your catalog. It allows you to add, update or delete offers.'
+      parameters:
+      - name: request
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/offers_update'
+      responses:
+        200:
+          description: 'Response of offers update'
+          schema: 
+            $ref: '#/definitions/offers_update_response'
+          
+  '/batch_status':
+    post:
+      tags:
+      - Global
+      operationId: 'GetBatchStatus'
+      summary: 'This service is used to get the processing report of your batch imports.'
+      parameters:
+      - name: request
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/batch_status'
+      responses:
+        200:
+          description: 'Response of batch status'
+          schema: 
+            $ref: '#/definitions/batch_status_response'
+
+  
+      
+definitions: 
+
+  auth:
+    type: object
+    xml: 
+      namespace: 'http://www.fnac.com/schemas/mp-dialog.xsd'
+    properties:
+      partner_id:
+        type: string
+        description: 'Fnac partner unique id'
+      shop_id:
+        type: string
+        description: 'Fnac shop unique id'
+      key: 
+        type: string
+        description: 'Partner authentication key'
+        
+  auth_response: 
+    type: object
+    xml: 
+      namespace: 'http://www.fnac.com/schemas/mp-dialog.xsd'
+    properties: 
+      status:                                   
+        type: string
+        xml:
+          attribute: true
+      token:
+        type: string
+        description: 'Valid token for current session'
+      validity:
+        type: string
+        description: 'Date when session will expire'
+        #required: false
+      version:
+        type: string
+        description: 'Current version of the API'
+        #required: false
+  
+  offers_update:
+    type: object
+    xml: 
+      namespace: 'http://www.fnac.com/schemas/mp-dialog.xsd'
+    properties:
+      shop_id:
+          type: string
+          xml:
+            attribute: true      
+      partner_id:
+          type: string
+          xml:
+            attribute: true  
+      token:
+          type: string
+          xml:
+            attribute: true  
+      offer:                                                       
+        type: string
+        description: 'XSLT of offers to update'
+        xml: 
+          x-isGeneratedByXSLT: true
+
+  offers_update_response:
+    type: object
+    xml: 
+      namespace: 'http://www.fnac.com/schemas/mp-dialog.xsd'
+    properties:
+      status:
+          type: string
+          xml:
+            attribute: true
+      batch_id:                                                    
+        type: string
+        description: 'XSLT of offers to update'
+      error:   
+        $ref: '#/definitions/error'
+
+  batch_status:
+    type: object
+    xml: 
+      namespace: 'http://www.fnac.com/schemas/mp-dialog.xsd'
+    properties:
+      shop_id:
+          type: string
+          xml:
+            attribute: true      
+      partner_id:
+          type: string
+          xml:
+            attribute: true   
+      token:    
+        type: string
+        xml:
+            attribute: true   
+      batch_id:                     
+        type: string
+        description: 'Batch unique identifier from FNAC'
+
+  batch_status_response:
+    xml:
+      namespace: 'http://www.fnac.com/schemas/mp-dialog.xsd'
+    properties:
+      status:
+          type: string
+          xml:
+            attribute: true
+      batch_id:                     
+        type: string
+        description: 'Batch unique identifier from FNAC'
+      offer: 
+        type: array
+        items:
+          $ref: '#/definitions/offer'
+      error:   
+        $ref: '#/definitions/error'
+
+  error: 
+    properties: 
+      severity: 
+        $ref: '#/definitions/severity'
+      code: 
+        type: string 
+        
+  offer: 
+    properties:
+      status: 
+        type: string
+        xml: 
+          attribute: true
+      product_fnac_id: 
+        type: string
+      offer_fnac_id: 
+        type: string
+      offer_seller_id:
+        type: string 
+      error:   
+        $ref: '#/definitions/error'
+      
+  severity:
+    type: string
+    enum:
+    - WARNING
+    - ERROR
+    - FATAL
+
+host: 'marketplace.ws.fd-recette.net'
+basePath: /api.php

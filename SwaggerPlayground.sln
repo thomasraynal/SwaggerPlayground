@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imperium", "Imperium\Imperi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RessourceService", "RessourceService\RessourceService.csproj", "{C29D06B4-65E1-44D6-959D-A90B37DAC2BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fnac", "Fnac\Fnac.csproj", "{7803C7CA-393C-4D7B-8EF7-C92105262C12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C29D06B4-65E1-44D6-959D-A90B37DAC2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C29D06B4-65E1-44D6-959D-A90B37DAC2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C29D06B4-65E1-44D6-959D-A90B37DAC2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7803C7CA-393C-4D7B-8EF7-C92105262C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7803C7CA-393C-4D7B-8EF7-C92105262C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7803C7CA-393C-4D7B-8EF7-C92105262C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7803C7CA-393C-4D7B-8EF7-C92105262C12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
