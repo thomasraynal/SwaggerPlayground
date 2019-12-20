@@ -1,0 +1,152 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Portefolio data provider",
+    "version": "1.0.0",
+    "title": "Portefolio Data Provider"
+  },
+  "basePath": "/v1/data",
+  "x-product": {
+    "appName": "RessourceServiceApp",
+    "appService": "RessourceServiceGateway"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get available Resource",
+        "operationId": "getAvailableResources",
+        "produces": [ "application/json" ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Add one or many item to a Resource",
+        "operationId": "storeItem",
+        "consumes": [ "application/json" ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "resourceItems",
+            "description": "Resource items",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResourceItems"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/resource/date": {
+      "get": {
+        "summary": "Find Resource items by Resource name and by date",
+        "operationId": "findItemByResourceAndByDate",
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "resource",
+            "in": "query",
+            "description": "Resource name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Resource item date filter",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResourceItems"
+            }
+          },
+          "400": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/resource/entity/date": {
+      "get": {
+        "summary": "Find Resource items by Resource name and by date",
+        "operationId": "findItemsByResourceAndByEntityAndByDate",
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "resource",
+            "in": "query",
+            "description": "Resource name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "entity",
+            "in": "query",
+            "description": "Entity name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Resource items date filter",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResourceItems"
+            }
+          },
+          "400": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ResourceItems": {
+      "properties": {
+        "Data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    }
+  }
+}
