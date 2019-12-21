@@ -18,6 +18,7 @@ namespace PetStore.Tests
     //todo: handle - minimum: 1
     //todo: handle - edge case on complex objects
 
+    //recursive object creation 
     //todo: set x-product properties
 
     [TestFixture]

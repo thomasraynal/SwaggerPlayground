@@ -49,9 +49,9 @@ public class HttpResponsePlaceOrder400Exception : Exception, IHasHttpServiceErro
 }
 
 
-    public abstract class PlaceOrderRequestValidatorBase : AbstractValidator<PlaceOrderRequest>
+    public class PlaceOrderRequestValidator : AbstractValidator<PlaceOrderRequest>
     {
-    public PlaceOrderRequestValidatorBase()
+    public PlaceOrderRequestValidator()
     {
     }
     }

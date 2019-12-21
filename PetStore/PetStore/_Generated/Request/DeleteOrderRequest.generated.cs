@@ -65,9 +65,9 @@ public class HttpResponseDeleteOrder404Exception : Exception, IHasHttpServiceErr
 }
 
 
-    public abstract class DeleteOrderRequestValidatorBase : AbstractValidator<DeleteOrderRequest>
+    public class DeleteOrderRequestValidator : AbstractValidator<DeleteOrderRequest>
     {
-    public DeleteOrderRequestValidatorBase()
+    public DeleteOrderRequestValidator()
     {
     RuleFor(request => request.OrderId).NotNull().NotEmpty().WithMessage("OrderId is required");
     }

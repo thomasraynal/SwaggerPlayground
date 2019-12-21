@@ -49,9 +49,9 @@ public class HttpResponseStoreItem400Exception : Exception, IHasHttpServiceError
 }
 
 
-    public abstract class StoreItemRequestValidatorBase : AbstractValidator<StoreItemRequest>
+    public class StoreItemRequestValidator : AbstractValidator<StoreItemRequest>
     {
-    public StoreItemRequestValidatorBase()
+    public StoreItemRequestValidator()
     {
     RuleFor(request => request.ResourceItems).NotNull().WithMessage("ResourceItems is required");
     }

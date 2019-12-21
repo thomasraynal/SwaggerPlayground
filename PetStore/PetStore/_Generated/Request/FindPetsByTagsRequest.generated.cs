@@ -49,9 +49,9 @@ public class HttpResponseFindPetsByTags400Exception : Exception, IHasHttpService
 }
 
 
-    public abstract class FindPetsByTagsRequestValidatorBase : AbstractValidator<FindPetsByTagsRequest>
+    public class FindPetsByTagsRequestValidator : AbstractValidator<FindPetsByTagsRequest>
     {
-    public FindPetsByTagsRequestValidatorBase()
+    public FindPetsByTagsRequestValidator()
     {
     }
     }

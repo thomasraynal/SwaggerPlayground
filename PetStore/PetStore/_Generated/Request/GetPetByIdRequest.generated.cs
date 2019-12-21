@@ -65,9 +65,9 @@ public class HttpResponseGetPetById404Exception : Exception, IHasHttpServiceErro
 }
 
 
-    public abstract class GetPetByIdRequestValidatorBase : AbstractValidator<GetPetByIdRequest>
+    public class GetPetByIdRequestValidator : AbstractValidator<GetPetByIdRequest>
     {
-    public GetPetByIdRequestValidatorBase()
+    public GetPetByIdRequestValidator()
     {
     RuleFor(request => request.PetId).NotNull().WithMessage("PetId is required");
     }

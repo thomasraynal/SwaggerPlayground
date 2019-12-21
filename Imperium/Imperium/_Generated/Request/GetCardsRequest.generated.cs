@@ -53,9 +53,9 @@ public class HttpResponseGetCards401Exception : Exception, IHasHttpServiceError
 }
 
 
-    public abstract class GetCardsRequestValidatorBase : AbstractValidator<GetCardsRequest>
+    public class GetCardsRequestValidator : AbstractValidator<GetCardsRequest>
     {
-    public GetCardsRequestValidatorBase()
+    public GetCardsRequestValidator()
     {
     RuleFor(request => request.CRACKER_API_KEY).NotNull().NotEmpty().WithMessage("CRACKER_API_KEY is required");
     RuleFor(request => request.CoachName).NotNull().NotEmpty().WithMessage("CoachName is required");

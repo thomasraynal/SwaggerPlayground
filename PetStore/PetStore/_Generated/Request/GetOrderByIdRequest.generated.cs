@@ -65,9 +65,9 @@ public class HttpResponseGetOrderById404Exception : Exception, IHasHttpServiceEr
 }
 
 
-    public abstract class GetOrderByIdRequestValidatorBase : AbstractValidator<GetOrderByIdRequest>
+    public class GetOrderByIdRequestValidator : AbstractValidator<GetOrderByIdRequest>
     {
-    public GetOrderByIdRequestValidatorBase()
+    public GetOrderByIdRequestValidator()
     {
     RuleFor(request => request.OrderId).NotNull().NotEmpty().WithMessage("OrderId is required");
     }

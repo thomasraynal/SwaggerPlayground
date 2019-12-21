@@ -65,9 +65,9 @@ public class HttpResponseGetUserByName404Exception : Exception, IHasHttpServiceE
 }
 
 
-    public abstract class GetUserByNameRequestValidatorBase : AbstractValidator<GetUserByNameRequest>
+    public class GetUserByNameRequestValidator : AbstractValidator<GetUserByNameRequest>
     {
-    public GetUserByNameRequestValidatorBase()
+    public GetUserByNameRequestValidator()
     {
     RuleFor(request => request.Username).NotNull().NotEmpty().WithMessage("Username is required");
     }

@@ -65,9 +65,9 @@ public class HttpResponseAddPet405Exception : Exception, IHasHttpServiceError
 }
 
 
-    public abstract class AddPetRequestValidatorBase : AbstractValidator<AddPetRequest>
+    public class AddPetRequestValidator : AbstractValidator<AddPetRequest>
     {
-    public AddPetRequestValidatorBase()
+    public AddPetRequestValidator()
     {
     RuleFor(request => request.Body).NotNull().WithMessage("Body is required");
     }

@@ -53,9 +53,9 @@ public class HttpResponseOpenNewPack401Exception : Exception, IHasHttpServiceErr
 }
 
 
-    public abstract class OpenNewPackRequestValidatorBase : AbstractValidator<OpenNewPackRequest>
+    public class OpenNewPackRequestValidator : AbstractValidator<OpenNewPackRequest>
     {
-    public OpenNewPackRequestValidatorBase()
+    public OpenNewPackRequestValidator()
     {
     RuleFor(request => request.CRACKER_API_KEY).NotNull().NotEmpty().WithMessage("CRACKER_API_KEY is required");
     RuleFor(request => request.CoachName).NotNull().NotEmpty().WithMessage("CoachName is required");

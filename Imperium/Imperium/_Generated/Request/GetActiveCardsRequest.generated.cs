@@ -49,9 +49,9 @@ public class HttpResponseGetActiveCards401Exception : Exception, IHasHttpService
 }
 
 
-    public abstract class GetActiveCardsRequestValidatorBase : AbstractValidator<GetActiveCardsRequest>
+    public class GetActiveCardsRequestValidator : AbstractValidator<GetActiveCardsRequest>
     {
-    public GetActiveCardsRequestValidatorBase()
+    public GetActiveCardsRequestValidator()
     {
     RuleFor(request => request.CRACKER_API_KEY).NotNull().NotEmpty().WithMessage("CRACKER_API_KEY is required");
     }

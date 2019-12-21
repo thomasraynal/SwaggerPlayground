@@ -33,9 +33,9 @@ namespace FnacApp.Fnac
 
 
 
-    public abstract class GetAuthenticationRequestValidatorBase : AbstractValidator<GetAuthenticationRequest>
+    public class GetAuthenticationRequestValidator : AbstractValidator<GetAuthenticationRequest>
     {
-    public GetAuthenticationRequestValidatorBase()
+    public GetAuthenticationRequestValidator()
     {
     RuleFor(request => request.Request).NotNull().WithMessage("Request is required");
     }

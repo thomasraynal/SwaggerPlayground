@@ -49,9 +49,9 @@ public class HttpResponseFindPetsByStatus400Exception : Exception, IHasHttpServi
 }
 
 
-    public abstract class FindPetsByStatusRequestValidatorBase : AbstractValidator<FindPetsByStatusRequest>
+    public class FindPetsByStatusRequestValidator : AbstractValidator<FindPetsByStatusRequest>
     {
-    public FindPetsByStatusRequestValidatorBase()
+    public FindPetsByStatusRequestValidator()
     {
     }
     }

@@ -61,9 +61,9 @@ public class HttpResponse{{uppercase_first_letter ../../this.operationId}}{{@key
 {{/each}}
 
 
-    public abstract class {{uppercase_first_letter this.operationId}}RequestValidatorBase : AbstractValidator<{{uppercase_first_letter this.operationId}}Request>
+    public class {{uppercase_first_letter this.operationId}}RequestValidator : AbstractValidator<{{uppercase_first_letter this.operationId}}Request>
     {
-    public {{uppercase_first_letter this.operationId}}RequestValidatorBase()
+    public {{uppercase_first_letter this.operationId}}RequestValidator()
     {
     {{#each this.parameters}}
     {{#with_matching this.required 'true' . }}

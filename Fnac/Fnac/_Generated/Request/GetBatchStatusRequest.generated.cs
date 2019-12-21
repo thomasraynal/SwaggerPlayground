@@ -33,9 +33,9 @@ namespace FnacApp.Fnac
 
 
 
-    public abstract class GetBatchStatusRequestValidatorBase : AbstractValidator<GetBatchStatusRequest>
+    public class GetBatchStatusRequestValidator : AbstractValidator<GetBatchStatusRequest>
     {
-    public GetBatchStatusRequestValidatorBase()
+    public GetBatchStatusRequestValidator()
     {
     RuleFor(request => request.Request).NotNull().WithMessage("Request is required");
     }

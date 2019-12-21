@@ -33,9 +33,9 @@ namespace FnacApp.Fnac
 
 
 
-    public abstract class PushOffersUpdateRequestValidatorBase : AbstractValidator<PushOffersUpdateRequest>
+    public class PushOffersUpdateRequestValidator : AbstractValidator<PushOffersUpdateRequest>
     {
-    public PushOffersUpdateRequestValidatorBase()
+    public PushOffersUpdateRequestValidator()
     {
     RuleFor(request => request.Request).NotNull().WithMessage("Request is required");
     }

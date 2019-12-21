@@ -37,9 +37,9 @@ namespace PetStoreApp.PetStore
 
 
 
-    public abstract class UploadFileRequestValidatorBase : AbstractValidator<UploadFileRequest>
+    public class UploadFileRequestValidator : AbstractValidator<UploadFileRequest>
     {
-    public UploadFileRequestValidatorBase()
+    public UploadFileRequestValidator()
     {
     RuleFor(request => request.PetId).NotNull().WithMessage("PetId is required");
     }

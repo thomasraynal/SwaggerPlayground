@@ -139,7 +139,9 @@
           "type": "array",
           "items": {
             "type": "object",
-            "properties": {}
+            "additionalProperties": {
+              "type": "object"
+            }
           }
         },
         "Timestamp": {

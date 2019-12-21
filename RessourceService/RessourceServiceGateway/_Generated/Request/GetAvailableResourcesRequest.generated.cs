@@ -31,9 +31,9 @@ namespace RessourceServiceApp.RessourceServiceGateway
 
 
 
-    public abstract class GetAvailableResourcesRequestValidatorBase : AbstractValidator<GetAvailableResourcesRequest>
+    public class GetAvailableResourcesRequestValidator : AbstractValidator<GetAvailableResourcesRequest>
     {
-    public GetAvailableResourcesRequestValidatorBase()
+    public GetAvailableResourcesRequestValidator()
     {
     }
     }

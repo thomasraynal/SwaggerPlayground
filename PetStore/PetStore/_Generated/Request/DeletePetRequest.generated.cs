@@ -49,9 +49,9 @@ public class HttpResponseDeletePet400Exception : Exception, IHasHttpServiceError
 }
 
 
-    public abstract class DeletePetRequestValidatorBase : AbstractValidator<DeletePetRequest>
+    public class DeletePetRequestValidator : AbstractValidator<DeletePetRequest>
     {
-    public DeletePetRequestValidatorBase()
+    public DeletePetRequestValidator()
     {
     RuleFor(request => request.PetId).NotNull().WithMessage("PetId is required");
     }

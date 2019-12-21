@@ -31,9 +31,9 @@ namespace PetStoreApp.PetStore
 
 
 
-    public abstract class GetInventoryRequestValidatorBase : AbstractValidator<GetInventoryRequest>
+    public class GetInventoryRequestValidator : AbstractValidator<GetInventoryRequest>
     {
-    public GetInventoryRequestValidatorBase()
+    public GetInventoryRequestValidator()
     {
     }
     }

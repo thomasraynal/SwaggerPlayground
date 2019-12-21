@@ -31,9 +31,9 @@ namespace PetStoreApp.PetStore
 
 
 
-    public abstract class LogoutUserRequestValidatorBase : AbstractValidator<LogoutUserRequest>
+    public class LogoutUserRequestValidator : AbstractValidator<LogoutUserRequest>
     {
-    public LogoutUserRequestValidatorBase()
+    public LogoutUserRequestValidator()
     {
     }
     }

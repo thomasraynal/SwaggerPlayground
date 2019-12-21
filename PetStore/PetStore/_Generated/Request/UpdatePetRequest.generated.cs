@@ -81,9 +81,9 @@ public class HttpResponseUpdatePet405Exception : Exception, IHasHttpServiceError
 }
 
 
-    public abstract class UpdatePetRequestValidatorBase : AbstractValidator<UpdatePetRequest>
+    public class UpdatePetRequestValidator : AbstractValidator<UpdatePetRequest>
     {
-    public UpdatePetRequestValidatorBase()
+    public UpdatePetRequestValidator()
     {
     }
     }

@@ -7,6 +7,8 @@ using FluentValidation;
 
 namespace RessourceServiceApp.RessourceServiceGateway
 {
+
+
     public partial class ResourceItems
     {
       public IEnumerable< object > Data {get; set; }
@@ -31,13 +33,11 @@ namespace RessourceServiceApp.RessourceServiceGateway
 
     public abstract class ResourceItemsValidatorBase : AbstractValidator<ResourceItems>
     {
-    public ResourceItemsValidatorBase()
-    {
-    }
-    }
-
+        public ResourceItemsValidatorBase()
+        {
+        }
     }
 
-
+}
 
 

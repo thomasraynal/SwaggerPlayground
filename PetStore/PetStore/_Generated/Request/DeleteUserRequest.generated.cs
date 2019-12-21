@@ -65,9 +65,9 @@ public class HttpResponseDeleteUser404Exception : Exception, IHasHttpServiceErro
 }
 
 
-    public abstract class DeleteUserRequestValidatorBase : AbstractValidator<DeleteUserRequest>
+    public class DeleteUserRequestValidator : AbstractValidator<DeleteUserRequest>
     {
-    public DeleteUserRequestValidatorBase()
+    public DeleteUserRequestValidator()
     {
     RuleFor(request => request.Username).NotNull().NotEmpty().WithMessage("Username is required");
     }

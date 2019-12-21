@@ -51,9 +51,9 @@ public class HttpResponseFindItemByResourceAndByDate400Exception : Exception, IH
 }
 
 
-    public abstract class FindItemByResourceAndByDateRequestValidatorBase : AbstractValidator<FindItemByResourceAndByDateRequest>
+    public class FindItemByResourceAndByDateRequestValidator : AbstractValidator<FindItemByResourceAndByDateRequest>
     {
-    public FindItemByResourceAndByDateRequestValidatorBase()
+    public FindItemByResourceAndByDateRequestValidator()
     {
     RuleFor(request => request.Resource).NotNull().NotEmpty().WithMessage("Resource is required");
     RuleFor(request => request.Date).NotNull().NotEmpty().WithMessage("Date is required");

@@ -51,9 +51,9 @@ public class HttpResponseDeleteCurrentCollection401Exception : Exception, IHasHt
 }
 
 
-    public abstract class DeleteCurrentCollectionRequestValidatorBase : AbstractValidator<DeleteCurrentCollectionRequest>
+    public class DeleteCurrentCollectionRequestValidator : AbstractValidator<DeleteCurrentCollectionRequest>
     {
-    public DeleteCurrentCollectionRequestValidatorBase()
+    public DeleteCurrentCollectionRequestValidator()
     {
     RuleFor(request => request.CRACKER_API_KEY).NotNull().NotEmpty().WithMessage("CRACKER_API_KEY is required");
     RuleFor(request => request.CoachName).NotNull().NotEmpty().WithMessage("CoachName is required");

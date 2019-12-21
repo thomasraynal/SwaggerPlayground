@@ -51,9 +51,9 @@ public class HttpResponseLoginUser400Exception : Exception, IHasHttpServiceError
 }
 
 
-    public abstract class LoginUserRequestValidatorBase : AbstractValidator<LoginUserRequest>
+    public class LoginUserRequestValidator : AbstractValidator<LoginUserRequest>
     {
-    public LoginUserRequestValidatorBase()
+    public LoginUserRequestValidator()
     {
     }
     }

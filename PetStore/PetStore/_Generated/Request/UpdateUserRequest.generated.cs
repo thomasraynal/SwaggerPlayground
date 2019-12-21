@@ -67,9 +67,9 @@ public class HttpResponseUpdateUser404Exception : Exception, IHasHttpServiceErro
 }
 
 
-    public abstract class UpdateUserRequestValidatorBase : AbstractValidator<UpdateUserRequest>
+    public class UpdateUserRequestValidator : AbstractValidator<UpdateUserRequest>
     {
-    public UpdateUserRequestValidatorBase()
+    public UpdateUserRequestValidator()
     {
     RuleFor(request => request.Username).NotNull().NotEmpty().WithMessage("Username is required");
     }

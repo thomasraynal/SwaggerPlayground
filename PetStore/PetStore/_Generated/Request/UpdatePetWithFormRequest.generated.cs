@@ -53,9 +53,9 @@ public class HttpResponseUpdatePetWithForm405Exception : Exception, IHasHttpServ
 }
 
 
-    public abstract class UpdatePetWithFormRequestValidatorBase : AbstractValidator<UpdatePetWithFormRequest>
+    public class UpdatePetWithFormRequestValidator : AbstractValidator<UpdatePetWithFormRequest>
     {
-    public UpdatePetWithFormRequestValidatorBase()
+    public UpdatePetWithFormRequestValidator()
     {
     RuleFor(request => request.PetId).NotNull().NotEmpty().WithMessage("PetId is required");
     }

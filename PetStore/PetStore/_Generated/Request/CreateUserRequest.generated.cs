@@ -33,9 +33,9 @@ namespace PetStoreApp.PetStore
 
 
 
-    public abstract class CreateUserRequestValidatorBase : AbstractValidator<CreateUserRequest>
+    public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>
     {
-    public CreateUserRequestValidatorBase()
+    public CreateUserRequestValidator()
     {
     }
     }
