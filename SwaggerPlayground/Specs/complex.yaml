@@ -1,0 +1,150 @@
+﻿swagger: '2.0'
+info:
+  version: "1.0"
+  title: Complex
+x-product: 
+  appName: complexApp
+  appService: complex
+
+paths:
+ '/complexA':
+    post:
+      operationId: 'PostComplexA'
+      parameters:
+      - name: request
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/complexObjectA'
+      responses:
+        200:
+          description: 'OK'
+ '/complexB':
+    post:
+      operationId: 'PostComplexB'
+      parameters:
+      - name: request
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/complexObjectB'
+      responses:
+        200:
+          description: 'OK'
+ '/complexC':
+    post:
+      operationId: 'PostComplexC'
+      parameters:
+      - name: request
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/complexObjectC'
+      responses:
+        200:
+          description: 'OK'
+ '/complexD':
+    post:
+      operationId: 'PostComplexD'
+      parameters:
+      - name: request
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/complexObjectD'
+      responses:
+        200:
+          description: 'OK'
+ '/complexE':
+    post:
+      operationId: 'PostComplexE'
+      parameters:
+      - name: request
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/complexObjectE'
+      responses:
+        200:
+          description: 'OK'
+definitions: 
+    complexObjectA:
+      type: object
+      properties:
+       propA:
+          type: object
+          additionalProperties:
+              type: integer
+              format: int32
+    complexObjectB:
+      type: object
+      properties:
+          propA:
+             type: integer
+             format: int64
+          propB:
+             type: object
+             additionalProperties:
+               type: integer
+               format: int32
+    complexObjectC:
+      type: object
+      properties:
+        pack_type:
+          type: string
+          enum: [nice, naughty, huge_bonus, immortal, stocking_killer]
+        team:
+          type: string
+          enum: [aog, au, afs, cgs, cpp, egc, fea, hl, sbr, uosp, vt]
+        something:
+          type: object
+          additionalProperties:
+            type: string
+            format: date-time
+    complexObjectD:
+      type: object
+      properties:
+        pack_type:
+          type: string
+          enum: [nice, naughty, huge_bonus, immortal, stocking_killer]
+        team:
+          type: string
+          enum: [aog, au, afs, cgs, cpp, egc, fea, hl, sbr, uosp, vt]
+        something:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+                type: string
+                format: date-time
+    complexObjectE:
+      type: object
+      properties:
+        pack_type:
+          type: string
+          enum: [nice, naughty, huge_bonus, immortal, stocking_killer]
+        team:
+          type: string
+          enum: [aog, au, afs, cgs, cpp, egc, fea, hl, sbr, uosp, vt]
+        something:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+                type: object
+                properties:
+                  propA:
+                   type: integer
+                   format: int64
+                  propB:
+                   type: object
+                   properties:
+                      propC:
+                        type: integer
+                        format: int64
+                      propD:
+                        additionalProperties:
+                            type: object
+                            additionalProperties:
+                              type: integer
+                              format: int32

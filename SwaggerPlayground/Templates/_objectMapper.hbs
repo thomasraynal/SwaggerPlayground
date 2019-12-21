@@ -1,0 +1,11 @@
+{{#if_not_empty this.additionalProperties}}
+    {{#if_equals this.additionalProperties.type 'object'}}
+{{> objectMapper this.additionalProperties}}       
+    {{else}}
+IEnumerable<(string,{{> types this.additionalProperties}})>
+    {{/if_equals}}
+{{else}}
+    {{#if_not_empty this.properties}}
+      {{> makeObject this}}
+    {{/if_not_empty }}  
+{{/if_not_empty }}  

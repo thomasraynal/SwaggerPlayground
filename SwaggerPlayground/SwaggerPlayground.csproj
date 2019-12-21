@@ -24,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Specs\complex.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Specs\fnac.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
