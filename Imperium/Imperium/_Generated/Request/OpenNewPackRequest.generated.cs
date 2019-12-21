@@ -13,7 +13,7 @@ namespace ImperiumApp.Imperium
     {
       public string CRACKER_API_KEY {get; set; }
       public string CoachName {get; set; }
-      public IEnumerable< object > Pack {get; set; }
+      public Pack Pack {get; set; }
 
       public override bool Equals(object obj)
         {

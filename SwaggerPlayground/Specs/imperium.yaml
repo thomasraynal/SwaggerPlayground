@@ -93,17 +93,7 @@ paths:
           name: pack
           description: Pack to generate.
           schema:
-            type: object
-            required:
-              - pack_type
-              - team
-            properties:
-              pack_type:
-                type: string
-                enum: [nice, naughty, huge bonus, immortal, stocking filler]
-              team:
-                type: string
-                enum: [aog, au, afs, cgs, cpp, egc, fea, hl, sbr, uosp, vt]
+            $ref: "#/definitions/Pack"
           
       produces:
         - application/json
@@ -112,3 +102,15 @@ paths:
           description: OK
         401:
           description: Authorization information is missing or invalid.
+definitions:
+    Pack:
+       required:
+            - pack_type
+            - team
+       properties:
+            pack_type:
+                type: string
+                enum: [nice, naughty, huge_bonus, immortal, stocking_filler]
+            team:
+                type: string
+                enum: [aog, au, afs, cgs, cpp, egc, fea, hl, sbr, uosp, vt]
