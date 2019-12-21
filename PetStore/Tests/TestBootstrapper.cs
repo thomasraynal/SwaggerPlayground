@@ -6,6 +6,7 @@ using Nancy.TinyIoc;
 using PetStoreApp.PetStore;
 using SwaggerPlayground.Common;
 using System;
+using System.Collections.Generic;
 
 namespace PetStore.Tests
 {
@@ -28,7 +29,15 @@ namespace PetStore.Tests
                            configuration.ResponseProcessors.Add(typeof(JsonProcessor));
                        });
             }
+            
+        }
 
+        protected override IEnumerable<Type> ModelBinders
+        {
+            get
+            {
+                return new[] { typeof(UploadFileRequestBinder) };
+            }
         }
 
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)

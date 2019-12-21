@@ -129,7 +129,13 @@ namespace PetStoreApp.PetStore
 
         public Task<ApiResponse> UploadFile(UploadFileRequest request)
         {
-            throw new NotImplementedException();
+            var response = new ApiResponse()
+            {
+                Code = 0,
+                Message = $"{request.File.Name} : {request.File.Value.Length} bytes"
+            };
+
+            return Task.FromResult(response);
         }
     }
 }

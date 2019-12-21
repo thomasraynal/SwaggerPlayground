@@ -13,7 +13,7 @@ namespace PetStoreApp.PetStore
     {
       public long PetId {get; set; }
       public string AdditionalMetadata {get; set; }
-      public Stream File {get; set; }
+      public HttpFile File {get; set; }
 
       public override bool Equals(object obj)
         {

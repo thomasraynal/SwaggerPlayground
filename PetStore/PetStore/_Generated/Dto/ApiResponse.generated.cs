@@ -7,6 +7,8 @@ using FluentValidation;
 
 namespace PetStoreApp.PetStore
 {
+
+
     public partial class ApiResponse
     {
       public int Code {get; set; }
@@ -33,13 +35,11 @@ namespace PetStoreApp.PetStore
 
     public abstract class ApiResponseValidatorBase : AbstractValidator<ApiResponse>
     {
-    public ApiResponseValidatorBase()
-    {
-    }
-    }
-
+        public ApiResponseValidatorBase()
+        {
+        }
     }
 
-
+}
 
 

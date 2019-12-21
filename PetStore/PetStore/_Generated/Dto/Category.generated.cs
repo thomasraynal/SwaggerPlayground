@@ -7,6 +7,8 @@ using FluentValidation;
 
 namespace PetStoreApp.PetStore
 {
+
+
     public partial class Category
     {
       public long Id {get; set; }
@@ -31,12 +33,10 @@ namespace PetStoreApp.PetStore
 
     public abstract class CategoryValidatorBase : AbstractValidator<Category>
     {
-    public CategoryValidatorBase()
-    {
-    }
-    }
-
+        public CategoryValidatorBase()
+        {
+        }
     }
 
-
+}
 

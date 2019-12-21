@@ -7,6 +7,8 @@ using FluentValidation;
 
 namespace PetStoreApp.PetStore
 {
+
+
     public partial class Pet
     {
       public long Id {get; set; }
@@ -39,14 +41,12 @@ namespace PetStoreApp.PetStore
 
     public abstract class PetValidatorBase : AbstractValidator<Pet>
     {
-    public PetValidatorBase()
-    {
-    RuleFor(dto => dto.Name).NotNull().NotEmpty().WithMessage("Name is required");
-    RuleFor(dto => dto.PhotoUrls).NotNull().WithMessage("PhotoUrls is required");
-    }
-    }
-
+        public PetValidatorBase()
+        {
+                        RuleFor(dto => dto.Name).NotNull().NotEmpty().WithMessage("Name is required");
+                        RuleFor(dto => dto.PhotoUrls).NotNull().WithMessage("PhotoUrls is required");
+        }
     }
 
-
+}
 

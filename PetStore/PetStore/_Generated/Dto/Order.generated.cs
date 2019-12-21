@@ -7,6 +7,8 @@ using FluentValidation;
 
 namespace PetStoreApp.PetStore
 {
+
+
     public partial class Order
     {
       public long Id {get; set; }
@@ -39,12 +41,10 @@ namespace PetStoreApp.PetStore
 
     public abstract class OrderValidatorBase : AbstractValidator<Order>
     {
-    public OrderValidatorBase()
-    {
-    }
-    }
-
+        public OrderValidatorBase()
+        {
+        }
     }
 
-
+}
 

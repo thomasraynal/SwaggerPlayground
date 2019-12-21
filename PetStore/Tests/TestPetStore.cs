@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using PetStoreApp.PetStore;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -223,6 +225,26 @@ namespace PetStore.Tests
         }
 
         [Test, Order(8)]
+        public async Task ShouldUploadFile()
+        {
+            var client = new HttpClient();
+    
+            var multipartFormDataContent = new MultipartFormDataContent();
+            multipartFormDataContent.Add(new ByteArrayContent(Encoding.UTF8.GetBytes("thisisafile")), "file", "file");
+
+            var httpResponseMessage = await client.PostAsync($"{_hostUri}/v2/pet/0/uploadImage", multipartFormDataContent);
+
+            var response = JsonConvert.DeserializeObject<ApiResponse>(await httpResponseMessage.Content.ReadAsStringAsync());
+
+            Assert.IsNotNull(response);
+
+            Assert.AreEqual("file : 11 bytes",response.Message);
+
+            Assert.AreEqual(HttpStatusCode.OK, httpResponseMessage.StatusCode);
+
+        }
+
+        [Test, Order(9)]
         public async Task ShouldDeleteAPet()
         {
             var client = new HttpClient();
