@@ -7,33 +7,15 @@ using FluentValidation;
 
 namespace FnacApp.Fnac
 {
-    public partial class Severity
-    {
 
-//      public override bool Equals(object obj)
-//        {
-//            return obj is Severity && obj.GetHashCode() == GetHashCode();
-//        }
 
-//      public override int GetHashCode()
-//       {
-//           unchecked
-//            {
-//                var hashCode = nameof(Severity).GetHashCode();
-//                return hashCode;
-//            }
-//        }
+public enum Severity {
+
+    WARNING,
+    ERROR,
+    FATAL,
     }
 
-    public abstract class SeverityValidatorBase : AbstractValidator<Severity>
-    {
-    public SeverityValidatorBase()
-    {
-    }
-    }
-
-    }
-
-
+}
 
 

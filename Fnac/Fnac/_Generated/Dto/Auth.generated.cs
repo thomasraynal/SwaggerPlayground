@@ -7,6 +7,8 @@ using FluentValidation;
 
 namespace FnacApp.Fnac
 {
+
+
     public partial class Auth
     {
       public string Partner_id {get; set; }
@@ -33,12 +35,10 @@ namespace FnacApp.Fnac
 
     public abstract class AuthValidatorBase : AbstractValidator<Auth>
     {
-    public AuthValidatorBase()
-    {
-    }
-    }
-
+        public AuthValidatorBase()
+        {
+        }
     }
 
-
+}
 

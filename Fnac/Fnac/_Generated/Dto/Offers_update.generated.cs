@@ -7,6 +7,8 @@ using FluentValidation;
 
 namespace FnacApp.Fnac
 {
+
+
     public partial class Offers_update
     {
       public string Shop_id {get; set; }
@@ -35,12 +37,10 @@ namespace FnacApp.Fnac
 
     public abstract class Offers_updateValidatorBase : AbstractValidator<Offers_update>
     {
-    public Offers_updateValidatorBase()
-    {
-    }
-    }
-
+        public Offers_updateValidatorBase()
+        {
+        }
     }
 
-
+}
 

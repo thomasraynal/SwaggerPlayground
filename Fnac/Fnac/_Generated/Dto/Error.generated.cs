@@ -7,6 +7,8 @@ using FluentValidation;
 
 namespace FnacApp.Fnac
 {
+
+
     public partial class Error
     {
       public Severity Severity {get; set; }
@@ -31,12 +33,10 @@ namespace FnacApp.Fnac
 
     public abstract class ErrorValidatorBase : AbstractValidator<Error>
     {
-    public ErrorValidatorBase()
-    {
-    }
-    }
-
+        public ErrorValidatorBase()
+        {
+        }
     }
 
-
+}
 
