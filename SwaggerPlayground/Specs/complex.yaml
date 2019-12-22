@@ -143,6 +143,7 @@ definitions:
                         type: integer
                         format: int64
                       propD:
+                        type: object
                         additionalProperties:
                             type: object
                             additionalProperties:

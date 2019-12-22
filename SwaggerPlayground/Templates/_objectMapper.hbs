@@ -7,5 +7,9 @@ IEnumerable<(string,{{> types this.additionalProperties}})>
 {{else}}
     {{#if_not_empty this.properties}}
       {{> makeObject this}}
+    {{else}}
+        {{#if_not_empty this.type}}
+IEnumerable<(string,{{> types this}})>
+        {{/if_not_empty }}  
     {{/if_not_empty }}  
 {{/if_not_empty }}  

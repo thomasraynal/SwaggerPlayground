@@ -13,7 +13,7 @@ namespace ComplexApp.Complex
     {
       public Pack_type Pack_type {get; set; }
       public Team Team {get; set; }
-      public (long propA, (long propC, (string, long) propD) propB) Something { get; set; }
+      public ( long propA , ( long propC , IEnumerable<(string, int )> propD ) propB ) Something {get; set; }
 
 //      public override bool Equals(object obj)
 //        {
