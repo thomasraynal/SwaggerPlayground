@@ -147,5 +147,5 @@ definitions:
                         additionalProperties:
                             type: object
                             additionalProperties:
-                              type: integer
-                              format: int32
+                              type: string
+                              format: date-time

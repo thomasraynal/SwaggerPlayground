@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RessourceServiceApp.RessourceServiceGateway
+namespace ResourceServiceApp.ResourceServiceGateway
 {
-    public class RessourceServiceGatewayService : IRessourceServiceGatewayService
+    public class RessourceServiceGatewayService : IResourceServiceGatewayService
     {
-        public Task<ResourceItems> FindItemByResourceAndByDate(FindItemByResourceAndByDateRequest request)
+        public Task<ResourceItems> FindResourceItemsByResourceNameAndByEntityAndByDate(FindResourceItemsByResourceNameAndByEntityAndByDateRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ResourceItems> FindItemsByResourceAndByEntityAndByDate(FindItemsByResourceAndByEntityAndByDateRequest request)
+        public Task<ResourceItems> FindResourceItemsByRessurceNameAndByDate(FindResourceItemsByRessurceNameAndByDateRequest request)
         {
             throw new NotImplementedException();
         }
@@ -22,7 +22,7 @@ namespace RessourceServiceApp.RessourceServiceGateway
             throw new NotImplementedException();
         }
 
-        public Task StoreItem(StoreItemRequest request)
+        public Task StoreResourceItems(StoreResourceItemsRequest request)
         {
             throw new NotImplementedException();
         }

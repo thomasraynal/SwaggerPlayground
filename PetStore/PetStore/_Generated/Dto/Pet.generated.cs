@@ -18,25 +18,6 @@ namespace PetStoreApp.PetStore
       public IEnumerable<Tag> Tags {get; set; }
       public PetStatus PetStatus {get; set; }
 
-//      public override bool Equals(object obj)
-//        {
-//            return obj is Pet && obj.GetHashCode() == GetHashCode();
-//        }
-
-//      public override int GetHashCode()
-//       {
-//           unchecked
-//            {
-//                var hashCode = nameof(Pet).GetHashCode();
-//                if (default != Id) hashCode = (hashCode * 397) ^ Id.GetHashCode();
-//                if (default != Category) hashCode = (hashCode * 397) ^ Category.GetHashCode();
-//                if (default != Name) hashCode = (hashCode * 397) ^ Name.GetHashCode();
-//                if (default != PhotoUrls) hashCode = (hashCode * 397) ^ PhotoUrls.GetHashCode();
-//                if (default != Tags) hashCode = (hashCode * 397) ^ Tags.GetHashCode();
-//                if (default != PetStatus) hashCode = (hashCode * 397) ^ PetStatus.GetHashCode();
-//                return hashCode;
-//            }
-//        }
     }
 
     public abstract class PetValidatorBase : AbstractValidator<Pet>

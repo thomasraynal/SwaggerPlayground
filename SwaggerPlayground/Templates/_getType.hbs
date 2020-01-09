@@ -33,5 +33,9 @@ HttpFile
 {{/if_equals}}
 
 {{#if_equals type 'object'}}
-{{> objectMapper this}}  
+    {{#if_equals additionalProperties 'true'}}
+object
+    {{else}}
+{{> mapObject this}}  
+    {{/if_equals}}
 {{/if_equals}}

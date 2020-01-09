@@ -1,15 +1,15 @@
 {{#if_not_empty this.additionalProperties}}
     {{#if_equals this.additionalProperties.type 'object'}}
-{{> objectMapper this.additionalProperties}}       
+{{> mapObject additionalProperties}}
+    {{/if_equals}}       
     {{else}}
-IEnumerable<(string,{{> types this.additionalProperties}})>
-    {{/if_equals}}
+IEnumerable<(string,{{> getType additionalProperties}})>
 {{else}}
     {{#if_not_empty this.properties}}
       {{> makeObject this}}
     {{else}}
         {{#if_not_empty this.type}}
-IEnumerable<(string,{{> types this}})>
-        {{/if_not_empty }}  
-    {{/if_not_empty }}  
+IEnumerable<(string,{{> getType this}})>
+        {{/if_not_empty }}
+    {{/if_not_empty }}
 {{/if_not_empty }}  

@@ -7,23 +7,23 @@ using Nancy;
 using SwaggerPlayground.Common;
 using FluentValidation;
 
-namespace RessourceServiceApp.RessourceServiceGateway
+namespace ResourceServiceApp.ResourceServiceGateway
 {
-    public partial class FindItemByResourceAndByDateRequest
+    public partial class FindResourceItemsByResourceNameAndByEntityAndByDateRequest
     {
       public string Resource {get; set; }
       public DateTime Date {get; set; }
 
       public override bool Equals(object obj)
         {
-            return obj is FindItemByResourceAndByDateRequest && obj.GetHashCode() == GetHashCode();
+            return obj is FindResourceItemsByResourceNameAndByEntityAndByDateRequest && obj.GetHashCode() == GetHashCode();
         }
 
       public override int GetHashCode()
         {
             unchecked
             {
-                var hashCode = nameof(FindItemByResourceAndByDateRequest).GetHashCode();
+                var hashCode = nameof(FindResourceItemsByResourceNameAndByEntityAndByDateRequest).GetHashCode();
                 if(default != Resource) hashCode = (hashCode * 397) ^ Resource.GetHashCode();
                 if(default != Date) hashCode = (hashCode * 397) ^ Date.GetHashCode();
                 return hashCode;
@@ -34,15 +34,15 @@ namespace RessourceServiceApp.RessourceServiceGateway
     }
 
 
-public class HttpResponseFindItemByResourceAndByDate400Exception : Exception, IHasHttpServiceError
+public class HttpResponseFindResourceItemsByResourceNameAndByEntityAndByDate400Exception : Exception, IHasHttpServiceError
 {
-    public HttpResponseFindItemByResourceAndByDate400Exception()
+    public HttpResponseFindResourceItemsByResourceNameAndByEntityAndByDate400Exception()
         : base() { }
 
-    public HttpResponseFindItemByResourceAndByDate400Exception(string message)
+    public HttpResponseFindResourceItemsByResourceNameAndByEntityAndByDate400Exception(string message)
         : base(message) { }
 
-    public HttpResponseFindItemByResourceAndByDate400Exception(string message, Exception innerException)
+    public HttpResponseFindResourceItemsByResourceNameAndByEntityAndByDate400Exception(string message, Exception innerException)
         : base(message, innerException) { }
 
     public HttpStatusCode HttpStatusCode => (HttpStatusCode)400;
@@ -51,9 +51,9 @@ public class HttpResponseFindItemByResourceAndByDate400Exception : Exception, IH
 }
 
 
-    public class FindItemByResourceAndByDateRequestValidator : AbstractValidator<FindItemByResourceAndByDateRequest>
+    public class FindResourceItemsByResourceNameAndByEntityAndByDateRequestValidator : AbstractValidator<FindResourceItemsByResourceNameAndByEntityAndByDateRequest>
     {
-    public FindItemByResourceAndByDateRequestValidator()
+    public FindResourceItemsByResourceNameAndByEntityAndByDateRequestValidator()
     {
     RuleFor(request => request.Resource).NotNull().NotEmpty().WithMessage("Resource is required");
     RuleFor(request => request.Date).NotNull().NotEmpty().WithMessage("Date is required");
@@ -61,4 +61,3 @@ public class HttpResponseFindItemByResourceAndByDate400Exception : Exception, IH
     }
 
     }
-

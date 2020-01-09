@@ -10,7 +10,7 @@ namespace {{uppercase_first_letter x-product.appName}}.{{uppercase_first_letter 
 {{#each paths}}
 {{#each this}}
 
-{{#one_line}}{{> typesResponse}}  {{uppercase_first_letter this.operationId}}({{uppercase_first_letter this.operationId}}Request request);{{/one_line}}
+{{#one_line}}{{> getResponse}}  {{uppercase_first_letter this.operationId}}({{uppercase_first_letter this.operationId}}Request request);{{/one_line}}
 
 {{/each}}
 {{/each}}

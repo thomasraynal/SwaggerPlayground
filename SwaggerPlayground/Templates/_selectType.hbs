@@ -1,14 +1,14 @@
 ﻿{{#if_not_empty this.type}}
     {{#if_equals this.type 'array'}}
         {{#if_not_empty this.items.type}}
-IEnumerable<{{> types this.items}}>
+IEnumerable<{{> getType this.items}}>
         {{else}}
             {{#if_not_empty this.items.$ref}}
 IEnumerable<{{uppercase_first_letter (split_get_last this.items.$ref '/') }}>
             {{/if_not_empty}}
         {{/if_not_empty}}
     {{else}}
-{{> types }}
+{{> getType }}
     {{/if_equals}}
 {{/if_not_empty}}
 
@@ -25,7 +25,7 @@ IEnumerable<{{uppercase_first_letter (split_get_last this.items.$ref '/') }}>
     {{#if_equals this.schema.type 'array'}}
         
         {{#if_not_empty this.schema.items.type}}
-IEnumerable<{{> types this.schema.items}}>
+IEnumerable<{{> getType this.schema.items}}>
         {{/if_not_empty}}
 
         {{#if_not_empty this.schema.items.$ref}}
@@ -35,9 +35,9 @@ IEnumerable<{{uppercase_first_letter (split_get_last this.schema.items.$ref '/')
     {{else}}
 
         {{#if_equals this.schema.type 'object'}}
-IEnumerable<{{> types this.schema}}>
+IEnumerable<{{> getType this.schema}}>
         {{else}}
-{{> types this.schema}}
+{{> getType this.schema}}
         {{/if_equals}}
     
     {{/if_equals}}

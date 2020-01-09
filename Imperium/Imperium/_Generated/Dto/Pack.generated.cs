@@ -14,21 +14,6 @@ namespace ImperiumApp.Imperium
       public Pack_type Pack_type {get; set; }
       public Team Team {get; set; }
 
-//      public override bool Equals(object obj)
-//        {
-//            return obj is Pack && obj.GetHashCode() == GetHashCode();
-//        }
-
-//      public override int GetHashCode()
-//       {
-//           unchecked
-//            {
-//                var hashCode = nameof(Pack).GetHashCode();
-//                if (default != Pack_type) hashCode = (hashCode * 397) ^ Pack_type.GetHashCode();
-//                if (default != Team) hashCode = (hashCode * 397) ^ Team.GetHashCode();
-//                return hashCode;
-//            }
-//        }
     }
 
     public abstract class PackValidatorBase : AbstractValidator<Pack>

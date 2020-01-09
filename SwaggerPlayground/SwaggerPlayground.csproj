@@ -36,7 +36,7 @@
     <None Update="Specs\petstore.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Specs\ressources.json">
+    <None Update="Specs\ressources.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

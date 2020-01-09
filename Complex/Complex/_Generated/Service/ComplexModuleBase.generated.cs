@@ -6,7 +6,7 @@ namespace ComplexApp.Complex
 {
     public abstract class ComplexModuleBase : NancyModule
     {
-        public ComplexModuleBase(IComplexService complexService) : base("")
+        public ComplexModuleBase(IComplexService complexService)
         {
 
            Post("/complexA",  async (parameters, token) =>

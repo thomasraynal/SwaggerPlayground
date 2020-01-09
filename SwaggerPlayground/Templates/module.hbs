@@ -16,7 +16,7 @@ namespace {{uppercase_first_letter x-product.appName}}.{{uppercase_first_letter 
             {
                 Configure{{uppercase_first_letter this.operationId}}RequestRoute();
 
-                return await this.EvaluateAndBind<{{uppercase_first_letter this.operationId}}Request>(async (request) => await {{../../x-product.appService}}Service.{{uppercase_first_letter this.operationId}}(request),  {{#one_line}}{{> responseDefaultStatusCode this}}){{/one_line}};
+                return await this.EvaluateAndBind<{{uppercase_first_letter this.operationId}}Request>(async (request) => await {{../../x-product.appService}}Service.{{uppercase_first_letter this.operationId}}(request),  {{#one_line}}{{> getResponseDefaultStatusCode this}}){{/one_line}};
             });
 
     {{/each}}

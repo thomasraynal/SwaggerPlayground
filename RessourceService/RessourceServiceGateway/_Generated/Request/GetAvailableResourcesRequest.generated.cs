@@ -7,7 +7,7 @@ using Nancy;
 using SwaggerPlayground.Common;
 using FluentValidation;
 
-namespace RessourceServiceApp.RessourceServiceGateway
+namespace ResourceServiceApp.ResourceServiceGateway
 {
     public partial class GetAvailableResourcesRequest
     {

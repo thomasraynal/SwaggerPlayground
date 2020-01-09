@@ -1,15 +1,21 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using ComplexApp.Complex;
+using Microsoft.AspNetCore.Hosting;
+using Newtonsoft.Json;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Imperium.Tests
+namespace Complex.Tests
 {
     [TestFixture]
-    public class TestImperium
+    public class TestComplex
     {
+
         private CancellationTokenSource _cancellationTokenSource;
         private string _hostUri;
         private IWebHost _host;
@@ -17,6 +23,7 @@ namespace Imperium.Tests
         [OneTimeSetUp]
         public async Task Startup()
         {
+
             _cancellationTokenSource = new CancellationTokenSource();
 
             _hostUri = "http://localhost:8080";
@@ -46,15 +53,20 @@ namespace Imperium.Tests
         }
 
         [Test, Order(0)]
-        public async Task ShouldHandleHeaderModelBinding()
+        public async Task ShouldPostAComplexA()
         {
+
+            var request = new PostComplexARequest()
+            {
+                Request = new ComplexObjectA() { PropA = new[] { ("str1", 1), ("str2", 2), ("str3", 3) } }
+            };
+
+
+            var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
             var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("CRACKER_API_KEY", "this is my key");
-            var httpResponseMessage = await client.GetAsync($"{_hostUri}/api/cracker/cards");
+            var httpResponseMessage = await client.PostAsync($"{_hostUri}/complexA", httpContent);
 
             Assert.AreEqual(HttpStatusCode.OK, httpResponseMessage.StatusCode);
-
         }
-
     }
 }
