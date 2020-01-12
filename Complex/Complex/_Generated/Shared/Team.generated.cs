@@ -1,7 +1,6 @@
 namespace ComplexApp.Complex
 {
 public enum Team {
-
     Aog,
     Au,
     Afs,

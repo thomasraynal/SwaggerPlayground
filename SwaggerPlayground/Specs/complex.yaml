@@ -122,7 +122,12 @@ definitions:
       properties:
         pack_type:
           type: string
-          enum: [nice, naughty, huge_bonus, immortal, stocking_killer]
+          enum:
+            - nice
+            - naughty
+            - huge_bonus
+            - immortal
+            - stocking_killer
         team:
           type: string
           enum: [aog, au, afs, cgs, cpp, egc, fea, hl, sbr, uosp, vt]
